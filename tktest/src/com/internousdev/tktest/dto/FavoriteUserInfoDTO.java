@@ -8,6 +8,7 @@ public class FavoriteUserInfoDTO {
 	private String userTag;
 	private String registDate;
 	private String updateDate;
+	private String favUserName;
 
 	public int getId() {
 		return this.id;
@@ -55,5 +56,13 @@ public class FavoriteUserInfoDTO {
 
 	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
+	}
+	
+	public String getFavUserName() {
+		return this.favUserName;
+	}
+
+	public void setFavUserName(String favUserName) {
+		this.favUserName = favUserName;
 	}
 }

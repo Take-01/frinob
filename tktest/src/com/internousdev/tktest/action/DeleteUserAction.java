@@ -10,5 +10,21 @@ public class DeleteUserAction extends ActionSupport implements SessionAware {
 	
 	private Map<String, Object> session;
 	
+	public String execute() {
+		
+		String result = ERROR;
+		
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+			return result;
+		}
+		
+		
+		
+		return result;
+	}
 
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 }

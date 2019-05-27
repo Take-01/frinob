@@ -1,0 +1,6 @@
+INDEX VERSION 1.3+C:\Users\internousdev\Desktop\workspace\workspace-takeguchi\mysite\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2774653550.index
+2655418751.index
+4152561112.index
+2246146117.index
+4269012006.index

@@ -15,13 +15,13 @@ public class FavoriteUserInfoDAO {
 	//お気に入り登録
 	
 	//お気に入り解除
-	public int deleteFavUser(String userId, String favUserId) {
+	public int revokeFavUser(String userId, String favUserId) {
 		
 		int result = 0;
 		
 		DBConnector dbConnector = new DBConnector();
 		
-		String sql = "DELETE FROM fav_user_info WHERE user_id = ? AND fav_user_id = ?";
+		String sql = "DELETE FROM favorite_user_info WHERE user_id = ? AND fav_user_id = ?";
 		
 		try(Connection con = dbConnector.getConnection()) {
 			
@@ -44,7 +44,10 @@ public class FavoriteUserInfoDAO {
 		
 		DBConnector dbConnector = new DBConnector();
 		
-		String sql = "SELECT * FROM fav_user_info WHERE user_id = ?";
+		String sql = "SELECT fui.id, fui.user_id, fui.fav_user_id, fui.user_tag, "
+				+ "fui.regist_date, fui.update_date, ui.user_name "
+				+ "FROM favorite_user_info as fui LEFT JOIN user_info as ui "
+				+ "ON fui.fav_user_id = ui.user_id WHERE user_id = ? ORDER BY update_date";
 		
 		try(Connection con = dbConnector.getConnection()) {
 			
@@ -61,6 +64,7 @@ public class FavoriteUserInfoDAO {
 				favUserDTO.setUserTag(rs.getString("user_tag"));
 				favUserDTO.setRegistDate(rs.getString("regist_date"));
 				favUserDTO.setUpdateDate(rs.getString("update_date"));
+				favUserDTO.setFavUserName(rs.getString("user_name"));
 				
 				favUserList.add(favUserDTO);
 			}
@@ -70,14 +74,14 @@ public class FavoriteUserInfoDAO {
 		return favUserList;
 	}
 	
-	//お気に入りユーザー詳細
+/*	//お気に入りユーザー詳細
 	public FavoriteUserInfoDTO getFavUser(String userId, String favUserId) {
 		
 		FavoriteUserInfoDTO favUserDTO = new FavoriteUserInfoDTO();
 		
 		DBConnector dbConnector = new DBConnector();
 		
-		String sql = "SELECT * FROM fav_user_info WHERE user_id = ? AND fav_user_id = ?";
+		String sql = "SELECT * FROM favorite_user_info WHERE user_id = ? AND fav_user_id = ?";
 		
 		try(Connection con = dbConnector.getConnection()) {
 			
@@ -98,6 +102,11 @@ public class FavoriteUserInfoDAO {
 			e.printStackTrace();
 		}
 		return favUserDTO;
-	}
+	}*/
 
+	//お気に入り登録されているユーザー情報を削除
+	public int deleteFavUser(String favUserId) {
+		
+		DBConnector dbConnector = new DBConnector();
+	}
 }
