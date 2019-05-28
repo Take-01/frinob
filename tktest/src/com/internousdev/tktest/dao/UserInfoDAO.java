@@ -9,27 +9,50 @@ import com.internousdev.tktest.dto.UserInfoDTO;
 import com.internousdev.tktest.util.DBConnector;
 
 public class UserInfoDAO {
+	
+	//ユーザーIDとパスワードに一致するデータが登録されているか調べる
+	public boolean isExistsUser(String userId, String password) {
+		
+		boolean result = false;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "SELECT COUNT(*) FROM user_info WHERE user_id = ? AND password = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setString(2, password);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				if(rs.getInt("count") > 0) {
+					result = true;
+				}
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
-	//ユーザーIDとパスワードが一致するユーザー情報を取得
-	public UserInfoDTO getUserInfo(String userId, String password) {
+	//ユーザーIDと一致するユーザー情報を取得
+	public UserInfoDTO getUserInfo(String userId) {
 
 		DBConnector dbConnector = new DBConnector();
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
-
-		String sql = "SELECT * FROM user_info WHERE user_id = ? AND password = ?";
+		String sql = "SELECT * FROM user_info WHERE user_id = ?";
 
 		try(Connection con = dbConnector.getConnection()) {
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-			ps.setString(2, password);
 
 			ResultSet rs = ps.executeQuery();
 
 			if(rs.next()) {
 				userInfoDTO.setId(rs.getInt("id"));
 				userInfoDTO.setUserId(rs.getString("user_id"));
-				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setUserName(rs.getString("user_name"));
 				userInfoDTO.setEmail(rs.getString("email"));
 				userInfoDTO.setRegistDate(rs.getString("regist_date"));

@@ -18,9 +18,7 @@ public class FavoriteUserInfoDAO {
 	public int revokeFavUser(String userId, String favUserId) {
 		
 		int result = 0;
-		
 		DBConnector dbConnector = new DBConnector();
-		
 		String sql = "DELETE FROM favorite_user_info WHERE user_id = ? AND fav_user_id = ?";
 		
 		try(Connection con = dbConnector.getConnection()) {
@@ -37,13 +35,31 @@ public class FavoriteUserInfoDAO {
 		return result;
 	}
 	
-	//お気に入りユーザーリスト
+	//全てのお気に入り登録を解除
+	public int revokeAllFavUser(String userId) {
+		
+		int result = 0;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "DELETE FROM favorite_user_info WHERE use_id = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			
+			result = ps.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	//お気に入り登録したユーザーリスト
 	public List<FavoriteUserInfoDTO> getFavUserList(String userId) {
 		
 		List<FavoriteUserInfoDTO> favUserList = new ArrayList<FavoriteUserInfoDTO>();
-		
 		DBConnector dbConnector = new DBConnector();
-		
 		String sql = "SELECT fui.id, fui.user_id, fui.fav_user_id, fui.user_tag, "
 				+ "fui.regist_date, fui.update_date, ui.user_name "
 				+ "FROM favorite_user_info as fui LEFT JOIN user_info as ui "
@@ -107,6 +123,20 @@ public class FavoriteUserInfoDAO {
 	//お気に入り登録されているユーザー情報を削除
 	public int deleteFavUser(String favUserId) {
 		
+		int result = 0;
 		DBConnector dbConnector = new DBConnector();
+		String sql = "DELETE FROM favorite_user_info WHERE fav_user_id = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, favUserId);
+			
+			result = ps.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

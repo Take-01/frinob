@@ -32,24 +32,26 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		userIdMessageList = inputChecker.getMessages(userId, "ユーザーID", 4, 16, 1, 2, 6);
 		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 6);
 
-		if (CollectionUtils.isNotEmpty(userIdMessageList) || CollectionUtils.isNotEmpty(passwordMessageList)) {
+		if(CollectionUtils.isNotEmpty(userIdMessageList) || CollectionUtils.isNotEmpty(passwordMessageList)) {
 			return result = "login";
 		}
 
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
-		UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(userId, password);
+		if(userInfoDAO.isExistsUser(userId, password)) { //登録済みユーザーかチェック
+			
+			UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(userId);
 
-		if (userInfoDTO.getUserId().equals(userId)) {
-			session.put("loggedIn", 1);
-			session.put("userId", userInfoDTO.getUserId());
-			session.put("userName", userInfoDTO.getUserName());
-			result = SUCCESS;
+			if(userInfoDTO.getUserId().equals(userId)) {
+				session.put("loggedIn", 1);
+				session.put("userId", userInfoDTO.getUserId());
+				session.put("userName", userInfoDTO.getUserName());
+				result = SUCCESS;
 
-			if (session.containsKey("postFlg") && session.get("postFlg").equals(1)) {
-				result = "post";
+				if (session.containsKey("postFlg") && session.get("postFlg").equals(1)) {
+					result = "post";
+				}
 			}
 		}
-
 		return result;
 	}
 

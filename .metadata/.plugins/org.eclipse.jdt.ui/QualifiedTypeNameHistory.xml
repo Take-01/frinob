@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.internousdev.tktest.dto.PostInfoDTO"/>
+<fullyQualifiedTypeName name="com.internousdev.tktest.dao.UserInfoDAO"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.internousdev.tktest.dto.UserInfoDTO"/>
+<fullyQualifiedTypeName name="org.apache.struts2.interceptor.SessionAware"/>
+<fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
+<fullyQualifiedTypeName name="com.internousdev.tktest.util.InputChecker"/>
+</qualifiedTypeNameHistroy>

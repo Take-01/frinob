@@ -19,7 +19,6 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 		} else {
 			result = SUCCESS;
 		}
-
 		return result;
 	}
 

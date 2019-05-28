@@ -15,12 +15,10 @@ public class FavoritePostInfoDAO {
 	//お気に入り登録
 	
 	//お気に入り解除
-	public int deleteFavPost(String userId, int favPostId) {
+	public int revokeFavPost(String userId, int favPostId) {
 		
 		int result = 0;
-		
 		DBConnector dbConnector = new DBConnector();
-		
 		String sql = "DELETE FROM favorite_post_info WHERE user_id = ? AND post_id = ?";
 		
 		try(Connection con = dbConnector.getConnection()) {
@@ -37,13 +35,31 @@ public class FavoritePostInfoDAO {
 		return result;
 	}
 	
-	//お気に入り投稿のリスト
+	//全てのお気に入り登録を解除
+	public int revokeAllFavPost(String userId) {
+		
+		int result = 0;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "DELETE FROM favorite_post_info WHERE user_id = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			
+			result = ps.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	//お気に入り登録した投稿のリスト
 	public List<FavoritePostInfoDTO> getFavPostList(String userId) {
 		
 		List<FavoritePostInfoDTO> favPostList = new ArrayList<FavoritePostInfoDTO>();
-		
 		DBConnector dbConnector = new DBConnector();
-		
 		String sql = "SELECT fpi.id, fpi.user_id, fpi.post_id, fpi.post_tag, "
 				+ "fpi.regist_date as fav_regist_date, fpi.update_date as fav_update_date, "
 				+ "pi.writer_id, pi.title, pi.body, pi.image_file_path, pi.image_file_name, "
@@ -80,6 +96,26 @@ public class FavoritePostInfoDAO {
 			e.printStackTrace();
 		}
 		return favPostList;
+	}
+	
+	//お気に入り登録されている投稿を削除
+	public int deleteFavPost(int favPostId) {
+		
+		int result = 0;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "DELETE FROM favorite_post_info WHERE post_id = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, favPostId);
+			
+			result = ps.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

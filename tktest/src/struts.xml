@@ -10,6 +10,7 @@
 		<!-- グローバル -->
 		<global-results>
 			<result name="error">error.jsp</result>
+			<result name="sessionError">sessionError.jsp</result>
 		</global-results>
 
 		<!-- HomeAction -->
@@ -47,6 +48,16 @@
 		<!-- CreateUserCompleteAction -->
 		<action name="CreateUserCompleteAction" class="com.internousdev.tktest.action.CreateUserCompleteAction" method="execute">
 			<result name="success">createUserComplete.jsp</result>
+		</action>
+		
+		<!-- DeleteUserConfirmAction -->
+		<action name="DeleteUserConfirmAction" class="com.internousdev.tktest.action.DeleteUserConfirmAction" method="execute">
+			<result name="success">deleteConfirm.jsp</result>
+		</action>
+		
+		<!-- DeleteUserCompleteAction -->
+		<action name="DeleteUserCompleteAction" class="com.internousdev.tktest.action.DeleteUserCompleteAction" method="execute">
+			<result name="success">deleteComplete.jsp</result>
 		</action>
 
 	</package>
