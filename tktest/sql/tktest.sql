@@ -19,8 +19,9 @@ create table user_info(
 ;
 
 insert into user_info values
-(1, "guest1", "guest1", "ゲスト１", "guest1@gmail.com", now(), now()),
-(2, "guest2", "guest2", "ゲスト２", "guest2@gmail.com", now(), now());
+(1, "guest1", "guest1", "ゲスト1", "guest1@gmail.com", now(), now()),
+(2, "guest2", "guest2", "ゲスト2", "guest2@gmail.com", now(), now()),
+(3, "guest3", "guest3", "ゲスト3", "guest3@gmail.com", now(), now());
 
 create table post_info(
 	id int primary key not null auto_increment comment "ID",
@@ -69,7 +70,7 @@ create table favorite_user_info(
 
 create table category(
 	category_id int primary key not null comment "カテゴリーID",
-	category_name varchar(20) not null comment "カテゴリー名",
+	category_name varchar(20) unique not null comment "カテゴリー名",
 	category_description varchar(100) not null comment "カテゴリー説明",
 	regist_date datetime comment "登録日時",
 	update_date datetime comment "更新日時"
@@ -77,3 +78,11 @@ create table category(
 	default charset=utf8
 	comment="カテゴリーテーブル"
 ;
+
+insert into category values
+(0, "未分類", "未分類", now(), now()),
+(1, "生活", "料理、掃除など生活に関すること", now(), now()),
+(2, "お金", "貯金、投資、節約などお金に関すること", now(), now()),
+(3, "趣味", "趣味に関すること", now(), now()),
+(4, "学習", "資格、学校、その他学習に関すること", now(), now()),
+(5, "仕事", "仕事に関すること", now(), now());

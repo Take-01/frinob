@@ -1,0 +1,42 @@
+package com.internousdev.tktest.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
+
+import com.internousdev.tktest.dto.CategoryDTO;
+import com.internousdev.tktest.util.DBConnector;
+
+public class CategoryDAO {
+
+	//カテゴリーを取得
+	public List<CategoryDTO> getCategoryList() {
+		
+		List<Integer> categoryList = ArrayList<Integer>();
+		DBConnector dbConnector = new DBConnector();
+		String sql = "SELECT * FROM category";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				CategoryDTO categoryDTO = new CategoryDTO();
+				categoryDTO.setCategoryId(rs.getInt("category_id"));
+				categoryDTO.setCategoryName(rs.getString("category_name"));
+				categoryDTO.setCategoryDescription(rs.getString("category_description"));
+				categoryDTO.setRegistDate(rs.getString("regist_date"));
+				categoryDTO.setUpdateDate(rs.getString("update_date"));
+				
+				categoryList.add(categoryDTO);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return categoryList;
+	}
+}

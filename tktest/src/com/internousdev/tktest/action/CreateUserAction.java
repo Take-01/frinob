@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CreateUserAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
-	private int isWritten;
+	private int backFlg;
 
 	public String execute() {
 
@@ -18,7 +18,7 @@ public class CreateUserAction extends ActionSupport implements SessionAware {
 		if(session.containsKey("loggedIn")) {
 			return result;
 		} else {
-			if(isWritten != 1) { //登録確認画面からの遷移でない場合
+			if(backFlg != 1) { //登録確認画面からの遷移でない場合
 				session.remove("userId");
 				session.remove("password");
 				session.remove("userName");
@@ -30,8 +30,8 @@ public class CreateUserAction extends ActionSupport implements SessionAware {
 		return result;
 	}
 
-	public void setIsWritten(int isWritten) {
-		this.isWritten = isWritten;
+	public void setBackFlg(int backFlg) {
+		this.backFlg = backFlg;
 	}
 
 	@Override

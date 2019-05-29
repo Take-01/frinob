@@ -6,7 +6,8 @@ public class PostInfoDTO {
 	private String writerId;
 	private String title;
 	private String body;
-	private int category;
+	private int categoryId;
+	private String categoryName;
 	private String imageFilePath;
 	private String imageFileName;
 	private String registDate;
@@ -44,12 +45,20 @@ public class PostInfoDTO {
 		this.body = body;
 	}
 
-	public int getCategory() {
-		return this.category;
+	public int getCategoryId() {
+		return this.categoryId;
 	}
 
-	public void setCategory(int category) {
-		this.category = category;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategoryName() {
+		return this.categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public String getImageFilePath() {

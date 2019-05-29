@@ -1,0 +1,12 @@
+function goCreateUser() {
+	document.getElementById("backFlg").value="1";
+}
+
+function goPostConfirmAction() {
+	document.getElementById("postForm").action="PostConfirmAction";
+}
+
+function goPostAction() {
+	document.getElementById("postForm").action="PostAction";
+	document.getElementById("backFlg").value="1";
+}

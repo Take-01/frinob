@@ -87,9 +87,7 @@ public class PostInfoDAO {
 	public List<PostInfoDTO> getPostList(String writerId) {
 		
 		List<PostInfoDTO> postList = new ArrayList<PostInfoDTO>();
-		
 		DBConnector dbConnector = new DBConnector();
-		
 		String sql = "SELECT * FROM post_info WHERE writer_id = ?";
 		
 		try(Connection con = dbConnector.getConnection()) {
@@ -105,7 +103,7 @@ public class PostInfoDAO {
 				postInfoDTO.setWriterId(rs.getString("writer_id"));
 				postInfoDTO.setTitle(rs.getString("title"));
 				postInfoDTO.setBody(rs.getString("body"));
-				postInfoDTO.setCategory(rs.getInt("category"));
+				postInfoDTO.setCategoryId(rs.getInt("category"));
 				postInfoDTO.setImageFilePath(rs.getString("image_file_path"));
 				postInfoDTO.setImageFileName(rs.getString("image_file_name"));
 				postInfoDTO.setRegistDate(rs.getString("regist_date"));
@@ -117,6 +115,36 @@ public class PostInfoDAO {
 			e.printStackTrace();
 		}
 		return postList;
+	}
+	
+	//投稿を取得
+	public PostInfoDTO getPostDetails(int id) {
+		
+		PostInfoDTO postInfoDTO = new PostInfoDTO();
+		DBConnector dbConnector = new DBConnector();
+		String sql = "SELECT * FROM post_info WHERE id = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				postInfoDTO.setId(rs.getInt("id"));
+				postInfoDTO.setWriterId(rs.getString("writer_id"));
+				postInfoDTO.setTitle(rs.getString("title"));
+				postInfoDTO.setBody(rs.getString("body"));
+				postInfoDTO.setCategoryId(rs.getInt("category"));
+				postInfoDTO.setImageFilePath(rs.getString("image_file_path"));
+				postInfoDTO.setImageFileName(rs.getString("image_file_name"));
+				postInfoDTO.setRegistDate(rs.getString("regist_date"));
+				postInfoDTO.setUpdateDate(rs.getString("update_date"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return postInfoDTO;
 	}
 
 }

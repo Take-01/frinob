@@ -1,0 +1,11 @@
+function goCreateUser() {
+	document.getElementById("isWritten").value="1";
+}
+
+function goPostConfirmAction() {
+	document.getElementById("postForm").action="PostConfirmAction";
+}
+
+function goPostAction() {
+	document.getElementById("postForm").action="PostAction";
+}
