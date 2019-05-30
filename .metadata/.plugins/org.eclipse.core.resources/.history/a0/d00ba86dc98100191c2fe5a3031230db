@@ -1,3 +1,0 @@
-function goCreateUser() {
-	document.getElementById("isWritten").value="1";
-}
