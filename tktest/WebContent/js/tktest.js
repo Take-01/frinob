@@ -19,3 +19,16 @@ function goDeletePostConfirmAction() {
 function goDeletePostCompleteAction() {
 	document.getElementById("deletePostForm").action="DeletePostCompleteAction";
 }
+
+function goPostDetailsAction() {
+	document.getElementById("backFlg").value="1";
+	document.getElementById("postDetailsForm").action="PostDetailsAction";
+}
+
+function goRevokeFavoritePostAction() {
+	document.getElementById("postDetailsForm").action="RevokeFavoritePostAction";
+}
+
+function goRegisterFavoritePostAction() {
+	document.getElementById("postDetailsForm").action="RegisterFavoritePostAction";
+}

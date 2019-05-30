@@ -6,7 +6,7 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="refresh" content="3;URL='MyPageAction'">
+	<meta http-equiv="refresh" content="2;URL='MyPageAction'">
 	<title>投稿完了</title>
 </head>
 

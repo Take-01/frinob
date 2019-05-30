@@ -14,7 +14,12 @@ public class FavoritePostInfoDAO {
 	
 	//お気に入り登録
 	
-	//お気に入り解除
+	/**
+	 * 投稿のお気に入りを解除する。
+	 * @param userId 登録者のユーザーID
+	 * @param favPostId 登録されている投稿ID
+	 * @return 解除件数(正常なら1)
+	 */
 	public int revokeFavPost(String userId, int favPostId) {
 		
 		int result = 0;
@@ -35,7 +40,11 @@ public class FavoritePostInfoDAO {
 		return result;
 	}
 	
-	//全てのお気に入り登録を解除
+	/**
+	 * 全てのお気に入り登録を解除。
+	 * @param userId 登録者のユーザーID
+	 * @return 解除件数
+	 */
 	public int revokeAllFavPost(String userId) {
 		
 		int result = 0;
@@ -55,7 +64,11 @@ public class FavoritePostInfoDAO {
 		return result;
 	}
 	
-	//お気に入り登録した投稿のリスト
+	/**
+	 * お気に入り登録した投稿のリストを取得する。
+	 * @param userId 登録者のユーザーID
+	 * @return 投稿のリスト
+	 */
 	public List<FavoritePostInfoDTO> getFavPostList(String userId) {
 		
 		List<FavoritePostInfoDTO> favPostList = new ArrayList<FavoritePostInfoDTO>();
@@ -98,7 +111,11 @@ public class FavoritePostInfoDAO {
 		return favPostList;
 	}
 	
-	//お気に入り登録されている投稿を削除
+	/**
+	 * お気に入り登録されている投稿を削除する。
+	 * @param favPostId 登録されている投稿ID
+	 * @return 削除件数(正常なら1)
+	 */
 	public int deleteFavPost(int favPostId) {
 		
 		int result = 0;
@@ -112,6 +129,36 @@ public class FavoritePostInfoDAO {
 			
 			result = ps.executeUpdate();
 			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 * 投稿をお気に入り登録しているか調べる。
+	 * @param userId ユーザーID
+	 * @param postId 投稿ID
+	 * @return お気に入り登録済みならtrue
+	 */
+	public boolean isRegistered(String userId, int postId) {
+		
+		boolean result = false;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "SELECT COUNT(*) FROM favorite_post_info WHERE user_id = ? AND post_id = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setInt(2, postId);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				int count = rs.getInt("count");
+				if(count > 0) {
+					result = true;
+				}
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

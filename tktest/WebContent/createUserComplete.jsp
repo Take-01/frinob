@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="refresh" content="3;URL='GoLoginAction'">
+	<meta http-equiv="refresh" content="2;URL='GoLoginAction'">
 	<title>ユーザー登録完了</title>
 </head>
 

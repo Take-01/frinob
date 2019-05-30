@@ -12,7 +12,14 @@ import com.internousdev.tktest.util.DBConnector;
 
 public class PostInfoDAO {
 	
-	//新規投稿
+	/**
+	 * 新規投稿をする。
+	 * @param writerId 投稿者ID
+	 * @param title タイトル
+	 * @param body 本文
+	 * @param category カテゴリーID
+	 * @return 投稿件数(正常なら1)
+	 */
 	public int post(String writerId, String title, String body, int category) {
 		
 		int result = 0;
@@ -38,7 +45,12 @@ public class PostInfoDAO {
 		return result;
 	}
 	
-	//投稿削除
+	/**
+	 * 投稿IDと投稿者IDに紐付いた投稿を削除する。
+	 * @param id 投稿ID
+	 * @param writerId 投稿者ID
+	 * @return 削除件数(正常なら1)
+	 */
 	public int deletePost(int id, String writerId) {
 		
 		int result = 0;
@@ -61,7 +73,11 @@ public class PostInfoDAO {
 		return result;
 	}
 	
-	//投稿をすべて削除
+	/**
+	 * 投稿者IDに紐付いた投稿をすべて削除する。
+	 * @param writerId 投稿者ID
+	 * @return 削除件数
+	 */
 	public int deleteAllPost(String writerId) {
 		
 		int result = 0;
@@ -83,12 +99,16 @@ public class PostInfoDAO {
 		return result;
 	}
 	
-	//投稿一覧
-	public List<PostInfoDTO> getPostList(String writerId) {
+	/**
+	 * 投稿者IDに紐付いた投稿のリストを取得する。
+	 * @param writerId 投稿者ID
+	 * @return 投稿のリスト
+	 */
+	public List<PostInfoDTO> getUserPostList(String writerId) {
 		
 		List<PostInfoDTO> postList = new ArrayList<PostInfoDTO>();
 		DBConnector dbConnector = new DBConnector();
-		String sql = "SELECT * FROM post_info WHERE writer_id = ?";
+		String sql = "SELECT * FROM post_info WHERE writer_id = ? ORDER BY regist_date";
 		
 		try(Connection con = dbConnector.getConnection()) {
 			
@@ -117,12 +137,20 @@ public class PostInfoDAO {
 		return postList;
 	}
 	
-	//投稿を取得
+	/**
+	 * 投稿IDに紐付いた投稿情報を取得する。
+	 * @param id 投稿ID
+	 * @return PostInfoDTO型 投稿情報
+	 */
 	public PostInfoDTO getPostDetails(int id) {
 		
 		PostInfoDTO postInfoDTO = new PostInfoDTO();
 		DBConnector dbConnector = new DBConnector();
-		String sql = "SELECT * FROM post_info WHERE id = ?";
+		String sql = "SELECT pi.id, pi.wirter_id, pi.title, pi.body, pi.category, "
+				+ "pi.image_file_path, pi.image_file_name, pi.regist_date, pi.update_date, "
+				+ "ca.category_name, ui.user_name FROM post_info as pi LEFT JOIN category as ca "
+				+ "ON pi.category = ca.category_id LEFT JOIN user_info as ui "
+				+ "ON pi.writer_id = ui.user_id WHERE pi.id = ?";
 		
 		try(Connection con = dbConnector.getConnection()) {
 			
@@ -133,9 +161,11 @@ public class PostInfoDAO {
 			if(rs.next()) {
 				postInfoDTO.setId(rs.getInt("id"));
 				postInfoDTO.setWriterId(rs.getString("writer_id"));
+				postInfoDTO.setWriterName(rs.getString("user_name"));
 				postInfoDTO.setTitle(rs.getString("title"));
 				postInfoDTO.setBody(rs.getString("body"));
 				postInfoDTO.setCategoryId(rs.getInt("category"));
+				postInfoDTO.setCategoryName(rs.getString("category_name"));
 				postInfoDTO.setImageFilePath(rs.getString("image_file_path"));
 				postInfoDTO.setImageFileName(rs.getString("image_file_name"));
 				postInfoDTO.setRegistDate(rs.getString("regist_date"));
@@ -147,4 +177,40 @@ public class PostInfoDAO {
 		return postInfoDTO;
 	}
 
+	/**
+	 * 投稿のリストを取得する。同じ投稿者のものは3件まで取得する。
+	 * @return 投稿情報のリスト
+	 */
+	public List<PostInfoDTO> getPostList() {
+		
+		List<PostInfoDTO> postInfoList = new ArrayList<PostInfoDTO>();
+		DBConnector dbConnector = new DBConnector();
+		String sql = "SELECT * FROM post_info as p1 WHERE "
+				+ "(SELECT COUNT(*) FROM post_info as p2 WHERE p2.writer_id = p1.writer_id) < 4 "
+				+ "ORDER BY regist_date LIMIT 50";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				PostInfoDTO postInfoDTO = new PostInfoDTO();
+				postInfoDTO.setId(rs.getInt("id"));
+				postInfoDTO.setWriterId(rs.getString("writer_id"));
+				postInfoDTO.setTitle(rs.getString("title"));
+				postInfoDTO.setBody(rs.getString("body"));
+				postInfoDTO.setCategoryId(rs.getInt("category"));
+				postInfoDTO.setImageFilePath(rs.getString("image_file_path"));
+				postInfoDTO.setImageFileName(rs.getString("image_file_name"));
+				postInfoDTO.setRegistDate(rs.getString("regist_date"));
+				postInfoDTO.setUpdateDate(rs.getString("update_date"));
+				
+				postInfoList.add(postInfoDTO);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return postInfoList;
+	}
 }

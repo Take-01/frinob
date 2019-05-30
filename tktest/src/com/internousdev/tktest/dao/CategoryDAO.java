@@ -41,10 +41,30 @@ public class CategoryDAO {
 	}
 	
 	//カテゴリーの情報を取得
-	public CategoryDTO getCategory() {
+	public CategoryDTO getCategory(int categoryId) {
 		
 		CategoryDTO categoryDTO = new CategoryDTO();
 		DBConnector dbConnector = new DBConnector();
+		String sql = "SELECT * FROM category WHERE category_id = ?";
+		
+		try(Connection con = dbConnector.getConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, categoryId);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				categoryDTO.setCategoryId(rs.getInt("category_id"));
+				categoryDTO.setCategoryName(rs.getString("category_name"));
+				categoryDTO.setCategoryDescription(rs.getString("category_description"));
+				categoryDTO.setRegistDate(rs.getString("regist_date"));
+				categoryDTO.setUpdateDate(rs.getString("update_date"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return categoryDTO;
 	}
 	
 }

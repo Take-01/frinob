@@ -4,10 +4,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.opensymphony.xwork2.ActionSupport;
 import com.internousdev.tktest.dao.PostInfoDAO;
 import com.internousdev.tktest.dto.PostInfoDTO;
-import com.internousdev.tktest.dao.CategoryDAO;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class DeletePostConfirmAction extends ActionSupport implements SessionAware {
 	
@@ -22,21 +21,35 @@ public class DeletePostConfirmAction extends ActionSupport implements SessionAwa
 			return "sessionError";
 		}
 		
-		if(backFlg == 1) {
+		if(backFlg == 1) { //投稿削除確認画面で戻るボタンが押された
 			session.remove("title");
 			session.remove("body");
 			session.remove("categoryId");
 			session.remove("categoryName");
-			return "back";
+			
+			result = "back";
+		} else {
+			int postId = Integer.parseInt(session.get("postId").toString());
+			PostInfoDAO postInfoDAO = new PostInfoDAO();
+			PostInfoDTO postInfoDTO = postInfoDAO.getPostDetails(postId);
+			
+			session.put("title", postInfoDTO.getTitle());
+			session.put("body", postInfoDTO.getBody());
+			session.put("categoryId", postInfoDTO.getCategoryId());
+			session.put("categoryName", postInfoDTO.getCategoryName());
+			
+			result = SUCCESS;
 		}
-
-		int postId = Integer.parseInt(session.get("postId").toString());
-		PostInfoDAO postInfoDAO = new PostInfoDAO();
-		PostInfoDTO postInfoDTO = postInfoDAO.getPostDetails(postId);
-		String categoryName = Category
-		session.put("title", postInfoDTO.getTitle());
-		session.put("body", postInfoDTO.getBody());
-		session.put("categoryId", postInfoDTO.getCategoryId());
+		return result;
+	}
+	
+	public void setBackFlg(int backFlg) {
+		this.backFlg = backFlg;
+	}
+	
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 }

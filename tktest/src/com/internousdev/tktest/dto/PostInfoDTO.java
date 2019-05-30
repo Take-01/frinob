@@ -4,6 +4,7 @@ public class PostInfoDTO {
 
 	private int id;
 	private String writerId;
+	private String writerName;
 	private String title;
 	private String body;
 	private int categoryId;
@@ -27,6 +28,14 @@ public class PostInfoDTO {
 
 	public void setWriterId(String writerId) {
 		this.writerId = writerId;
+	}
+
+	public String getWriterName() {
+		return this.writerName;
+	}
+
+	public void setWriterName(String writerName) {
+		this.writerName = writerName;
 	}
 
 	public String getTitle() {

@@ -60,7 +60,7 @@ public class DeleteUserCompleteAction extends ActionSupport implements SessionAw
 
 		// 投稿情報の削除
 		PostInfoDAO postInfoDAO = new PostInfoDAO();
-		List<PostInfoDTO> postList = postInfoDAO.getPostList(userId);
+		List<PostInfoDTO> postList = postInfoDAO.getUserPostList(userId);
 
 		if(!CollectionUtils.isEmpty(postList)) {
 			// お気に入り投稿テーブルから削除する

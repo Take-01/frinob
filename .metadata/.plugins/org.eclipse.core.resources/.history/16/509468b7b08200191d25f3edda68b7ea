@@ -1,0 +1,50 @@
+package com.internousdev.tktest.action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.tktest.dao.PostInfoDAO;
+import com.internousdev.tktest.dto.PostInfoDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class PostDetailsAction extends ActionSupport implements SessionAware {
+	
+	private Map<String, Object> session;
+	private int postId;
+	private PostInfoDTO postInfoDTO;
+	private int backFlg;
+	
+	public String execute() {
+		
+		String result = ERROR;
+		
+		if(backFlg == 1) {
+			session.remove("postId");
+			session.remove("title");
+			session.remove("body");
+			session.remove("writerId");
+			session.remove("writerName");
+			session.remove("registDate");
+			session.remove("updateDate");
+			
+			result = "back";
+		} else {
+			PostInfoDAO postInfoDAO = new PostInfoDAO();
+			postInfoDTO = postInfoDAO.getPostDetails(postId);
+			if(postInfoDTO != null && postInfoDTO.getId() != 0) {
+				session.put("postId", postId);
+				session.put("title", postInfoDTO.getTitle());
+				session.put("body", postInfoDTO.getBody());
+				session.put("writerId", postInfoDTO.getWriterId());
+				session.put("writerName", postInfoDTO.getWriterName());
+				session.put("registDate", postInfoDTO.getRegistDate());
+				session.put("updateDate", postInfoDTO.getRegistDate());
+				
+				result = SUCCESS;
+			}
+		}
+		return result;
+	}
+
+}

@@ -12,23 +12,7 @@
 <body>
 	<jsp:include page="header.jsp"/>
 
-	<!-- ログイン済なら投稿一覧を表示 -->
-	<s:if test='#session.containsKey("loggedIn") && #session.get("loggedIn").equals(1)'>
-		<div>
-			<s:iterator value="#session.postList">
-				<div>
-					<a href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{postId}"/></s:url>'></a>
-					<img src="postImagePath" alt="">
-					<h5><s:property value="postTitle"/></h5>
-					<p><s:property value="postBody"/></p>
-					<p><s:property value="postUser"/></p>
-				</div>
-			</s:iterator>
-		</div>
-	</s:if>
-
-	<!-- 未ログインならサイトの説明、新規登録ボタン、ログインボタンを表示 -->
-	<s:else>
+	<div id="main">
 		<h1>（サイト名）へようこそ！</h1>
 		<p>
 			（サイト名）はブログより手軽に、交流できる自由帳、がテーマのサイトです。<br>
@@ -44,6 +28,6 @@
 			<h5>もう登録済みですか？</h5>
 			<a href='<s:url action="GoLoginAction"/>'><button>ログイン</button></a>
 		</div>
-	</s:else>
+	</div>
 </body>
 </html>
