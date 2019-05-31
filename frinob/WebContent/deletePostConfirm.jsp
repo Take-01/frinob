@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>投稿削除確認</title>
+	<script type="text/javascript" src="./js/tktest.js"></script>
 </head>
 
 <body>
@@ -26,6 +27,14 @@
 			<tr>
 				<th>カテゴリー</th>
 				<td><s:property value="#session.categoryName"/></td>
+			</tr>
+			<tr>
+				<th>投稿日</th>
+				<td><s:property value="#session.registDate"/></td>
+			</tr>
+			<tr>
+				<th>更新日</th>
+				<td><s:property value="#session.updateDate"/></td>
 			</tr>
 		</table>
 		

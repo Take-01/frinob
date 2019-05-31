@@ -8,7 +8,9 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import xyz.frinob.dao.CategoryDAO;
 import xyz.frinob.dao.UserInfoDAO;
+import xyz.frinob.dto.CategoryDTO;
 import xyz.frinob.dto.UserInfoDTO;
 import xyz.frinob.util.InputChecker;
 
@@ -19,6 +21,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	private List<String> userIdMessageList;
 	private List<String> passwordMessageList;
+	private String notMatchMessage;
 
 	public String execute() {
 
@@ -38,8 +41,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		}
 
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
-		if(userInfoDAO.isExistsUser(userId, password)) { //登録済みユーザーかチェック
-			
+		if(!userInfoDAO.isExistsUser(userId, password)) { //登録済みユーザーかチェック
+			notMatchMessage = "ユーザーIDかパスワードが間違っています。";
+		} else {
+
 			UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(userId);
 
 			if(userInfoDTO.getUserId().equals(userId)) {
@@ -49,6 +54,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				result = SUCCESS;
 
 				if (session.containsKey("postFlg") && session.get("postFlg").equals(1)) {
+					CategoryDAO categoryDAO = new CategoryDAO();
+					List<CategoryDTO> categoryList = categoryDAO.getCategoryList();
+					if(CollectionUtils.isNotEmpty(categoryList)) {
+						session.put("categoryList", categoryList);
+					}
+					session.remove("postFlg");
 					result = "post";
 				}
 			}
@@ -70,6 +81,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public List<String> getPasswordMessageList() {
 		return this.passwordMessageList;
+	}
+	
+	public String getNotMatchMessage() {
+		return this.notMatchMessage;
 	}
 
 	@Override

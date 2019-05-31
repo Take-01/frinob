@@ -32,3 +32,8 @@ function goRevokeFavoritePostAction() {
 function goRegisterFavoritePostAction() {
 	document.getElementById("postDetailsForm").action="RegisterFavoritePostAction";
 }
+
+function goMyPageAction() {
+	document.getElementById("backFlg").value="1";
+	document.getElementById("postDetailsForm").action="MyPageAction";
+}

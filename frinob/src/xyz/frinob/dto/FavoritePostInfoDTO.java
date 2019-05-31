@@ -5,7 +5,11 @@ public class FavoritePostInfoDTO {
 	private int id;
 	private String userId;
 	private int favPostId;
-	private String postTag;
+	private String postTag1;
+	private String postTag2;
+	private String postTag3;
+	private String postTag4;
+	private String postTag5;
 	private String favRegistDate;
 	private String favUpdateDate;
 	private String writerId;
@@ -40,12 +44,44 @@ public class FavoritePostInfoDTO {
 		this.favPostId = favPostId;
 	}
 
-	public String getPostTag() {
-		return this.postTag;
+	public String getPostTag1() {
+		return this.postTag1;
 	}
 
-	public void setPostTag(String postTag) {
-		this.postTag = postTag;
+	public void setPostTag1(String postTag1) {
+		this.postTag1 = postTag1;
+	}
+
+	public String getPostTag2() {
+		return this.postTag2;
+	}
+
+	public void setPostTag2(String postTag2) {
+		this.postTag2 = postTag2;
+	}
+
+	public String getPostTag3() {
+		return this.postTag3;
+	}
+
+	public void setPostTag3(String postTag3) {
+		this.postTag3 = postTag3;
+	}
+
+	public String getPostTag4() {
+		return this.postTag4;
+	}
+
+	public void setPostTag4(String postTag4) {
+		this.postTag4 = postTag4;
+	}
+
+	public String getPostTag5() {
+		return this.postTag5;
+	}
+
+	public void setPostTag5(String postTag5) {
+		this.postTag5 = postTag5;
 	}
 
 	public String getFavRegistDate() {

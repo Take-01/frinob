@@ -20,10 +20,10 @@ public class PostCompleteAction extends ActionSupport implements SessionAware {
 			return result = "sessionError";
 		}
 		
-		String userId = String.valueOf(session.get("userId"));
-		String title = String.valueOf(session.get("title"));
-		String body = String.valueOf(session.get("body"));
-		int category = Integer.parseInt(String.valueOf(session.get("categoryId")));
+		String userId = session.get("userId").toString();
+		String title = session.get("title").toString();
+		String body = session.get("body").toString();
+		int category = Integer.parseInt(session.get("categoryId").toString());
 		
 		//データベースに投稿情報を登録する
 		PostInfoDAO postInfoDAO = new PostInfoDAO();

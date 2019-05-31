@@ -8,7 +8,7 @@ use frinob;
 create table user_info(
 	id int primary key not null auto_increment comment "ID",
 	user_id varchar(16) unique not null comment "ユーザーID",
-	password varchar(20) not null comment "パスワード",
+	password varchar(100) not null comment "パスワード",
 	user_name varchar(20) not null comment "ユーザー名",
 	email varchar(30) not null comment "メールアドレス",
 	regist_date datetime comment "登録日時",
@@ -44,7 +44,11 @@ create table favorite_post_info(
 	id int primary key not null auto_increment comment "ID",
 	user_id varchar(16) not null comment "ユーザーID",
 	post_id int not null comment "投稿記事ID",
-	post_tag varchar(20) not null default "未分類" comment "投稿記事のタグ",
+	post_tag1 varchar(20) not null default "未分類" comment "投稿記事のタグ1",
+	post_tag2 varchar(20) comment "投稿記事のタグ2",
+	post_tag3 varchar(20) comment "投稿記事のタグ3",
+	post_tag4 varchar(20) comment "投稿記事のタグ4",
+	post_tag5 varchar(20) comment "投稿記事のタグ5",
 	regist_date datetime comment "登録日時",
 	update_date datetime comment "更新日時",
 	foreign key(user_id) references user_info(user_id),
@@ -58,7 +62,11 @@ create table favorite_user_info(
 	id int primary key not null auto_increment comment "ID",
 	user_id varchar(16) not null comment "ユーザーID",
 	fav_user_id varchar(16) not null comment "お気に入りユーザーID",
-	user_tag varchar(20) not null default "未分類" comment "ユーザータグ",
+	user_tag1 varchar(20) not null default "未分類" comment "ユーザータグ1",
+	user_tag2 varchar(20) comment "ユーザータグ2",
+	user_tag3 varchar(20) comment "ユーザータグ3",
+	user_tag4 varchar(20) comment "ユーザータグ4",
+	user_tag5 varchar(20) comment "ユーザータグ5",
 	regist_date datetime comment "登録日時",
 	update_date datetime comment "更新日時",
 	foreign key(user_id) references user_info(user_id),
@@ -71,7 +79,7 @@ create table favorite_user_info(
 create table category(
 	category_id int primary key not null comment "カテゴリーID",
 	category_name varchar(20) unique not null comment "カテゴリー名",
-	category_description varchar(100) not null comment "カテゴリー説明",
+	category_description varchar(50) not null comment "カテゴリー説明",
 	regist_date datetime comment "登録日時",
 	update_date datetime comment "更新日時"
 )

@@ -10,7 +10,12 @@ import xyz.frinob.util.DBConnector;
 
 public class UserInfoDAO {
 	
-	//ユーザーIDとパスワードに一致するデータが登録されているか調べる
+	/**
+	 * ユーザーIDとパスワードに一致するデータが登録されているか調べる。
+	 * @param userId ユーザーID
+	 * @param password パスワード
+	 * @return 登録されていればtrue
+	 */
 	public boolean isExistsUser(String userId, String password) {
 		
 		boolean result = false;
@@ -26,7 +31,7 @@ public class UserInfoDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getInt("count") > 0) {
+				if(rs.getInt("count(*)") > 0) {
 					result = true;
 				}
 			}
@@ -36,7 +41,11 @@ public class UserInfoDAO {
 		return result;
 	}
 
-	//ユーザーIDと一致するユーザー情報を取得
+	/**
+	 * ユーザーIDと一致するユーザー情報を取得する。
+	 * @param userId ユーザーID
+	 * @return UserInfoDTO型　ユーザー情報
+	 */
 	public UserInfoDTO getUserInfo(String userId) {
 
 		DBConnector dbConnector = new DBConnector();
@@ -64,7 +73,14 @@ public class UserInfoDAO {
 		return userInfoDTO;
 	}
 
-	//新規ユーザー登録
+	/**
+	 * 新規ユーザー登録をする。
+	 * @param userId ユーザーID
+	 * @param password パスワード
+	 * @param userName ユーザー名
+	 * @param email メールアドレス
+	 * @return 登録件数(正常なら1)
+	 */
 	public int registUser(String userId, String password, String userName, String email) {
 
 		int result = 0;
@@ -90,7 +106,12 @@ public class UserInfoDAO {
 		return result;
 	}
 	
-	//ユーザー削除
+	/**
+	 * ユーザーを削除する。
+	 * @param userId ユーザーID
+	 * @param password パスワード
+	 * @return 削除件数(正常なら1)
+	 */
 	public int deleteUser(String userId, String password) {
 		
 		int result = 0;

@@ -11,11 +11,18 @@
 		<global-results>
 			<result name="error">error.jsp</result>
 			<result name="sessionError">sessionError.jsp</result>
+			<result name="login">login.jsp</result>
 		</global-results>
 
 		<!-- HomeAction -->
 		<action name="HomeAction" class="xyz.frinob.action.HomeAction" method="execute">
 			<result name="success">home.jsp</result>
+		</action>
+				
+		<!-- PostDetailsAction -->
+		<action name="PostDetailsAction" class="xyz.frinob.action.PostDetailsAction" method="execute">
+			<result name="success">postDetails.jsp</result>
+			<result name="back">home.jsp</result>
 		</action>
 
 		<!-- GoLoginAction -->
@@ -26,7 +33,7 @@
 		<!-- LoginAction -->
 		<action name="LoginAction" class="xyz.frinob.action.LoginAction" method="execute">
 			<result name="success">home.jsp</result>
-			<result name="login">login.jsp</result>
+			<result name="post">post.jsp</result>
 		</action>
 
 		<!-- LogoutAction -->
@@ -58,6 +65,38 @@
 		<!-- DeleteUserCompleteAction -->
 		<action name="DeleteUserCompleteAction" class="xyz.frinob.action.DeleteUserCompleteAction" method="execute">
 			<result name="success">deleteComplete.jsp</result>
+		</action>
+		
+		<!-- PostAction -->
+		<action name="PostAction" class="xyz.frinob.action.PostAction" method="execute">
+			<result name="success">post.jsp</result>
+		</action>
+		
+		<!-- PostConfirmAction -->
+		<action name="PostConfirmAction" class="xyz.frinob.action.PostConfirmAction" method="execute">
+			<result name="success">postConfirm.jsp</result>
+			<result name="back">post.jsp</result>
+		</action>
+		
+		<!-- PostCompleteAction -->
+		<action name="PostCompleteAction" class="xyz.frinob.action.PostCompleteAction" method="execute">
+			<result name="success">postComplete.jsp</result>
+		</action>
+		
+		<!-- DeletePostConfirmAction -->
+		<action name="DeletePostConfirmAction" class="xyz.frinob.action.DeletePostConfirmAction" method="execute">
+			<result name="success">deletePostConfirm.jsp</result>
+			<result name="back">myPostDetails.jsp</result>
+		</action>
+		
+		<!-- DeletePostCompleteAction -->
+		<action name="DeletePostCompleteAction" class="xyz.frinob.action.DeletePostCompleteAction" method="execute">
+			<result name="success">deletePostComplete.jsp</result>
+		</action>
+				
+		<!-- MyPageAction -->
+		<action name="MyPageAction" class="xyz.frinob.action.MyPageAction" method="execute">
+			<result name="success">myPage.jsp</result>
 		</action>
 
 	</package>

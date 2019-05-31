@@ -35,7 +35,7 @@
 			<s:password name="password" label="パスワード"/>
 			<s:submit value="削除"/>
 		</s:form>
-		<!-- <a href='<s:url action="UpdateUserAction"/>'><button>変更</button></a> -->
+		<%-- <a href='<s:url action="UpdateUserAction"/>'><button>変更</button></a> --%>
 		<a href='<s:url action="MyPageAction"/>'><button>戻る</button></a>
 	</div>
 </body>

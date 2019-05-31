@@ -20,20 +20,17 @@ public class PostDetailsAction extends ActionSupport implements SessionAware {
 	public String execute() {
 		
 		String result = ERROR;
+
+		session.remove("postId");
+		session.remove("title");
+		session.remove("body");
+		session.remove("writerId");
+		session.remove("writerName");
+		session.remove("categoryId");
+		session.remove("categoryName");
+		session.remove("registDate");
+		session.remove("updateDate");
 		
-		if(backFlg == 1) {
-			session.remove("postId");
-			session.remove("title");
-			session.remove("body");
-			session.remove("writerId");
-			session.remove("writerName");
-			session.remove("categoryId");
-			session.remove("categoryName");
-			session.remove("registDate");
-			session.remove("updateDate");
-			
-			result = "back";
-		} else {
 			if(session.containsKey("loggedIn") && session.get("loggedIn").equals(1)) {
 				//ログイン済みなら投稿をお気に入り登録しているか調べる
 				FavoritePostInfoDAO favPostDAO = new FavoritePostInfoDAO();

@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DBConnector {
 
 	private static String driverName = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost/tktest";
+	private static String url = "jdbc:mysql://localhost/frinob";
 	private static String user = "root";
-	private static String password = "KT%my-SQL01";
+	private static String password = "mysql";
 
 	public Connection getConnection() {
 

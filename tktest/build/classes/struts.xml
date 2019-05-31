@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+
+	<package name="com.internousdev.tktest.action" extends="struts-default">
+
+		<!-- グローバル -->
+		<global-results>
+			<result name="error">error.jsp</result>
+			<result name="sessionError">sessionError.jsp</result>
+		</global-results>
+
+		<!-- HomeAction -->
+		<action name="HomeAction" class="com.internousdev.tktest.action.HomeAction" method="execute">
+			<result name="success">home.jsp</result>
+		</action>
+
+		<!-- GoLoginAction -->
+		<action name="GoLoginAction" class="com.internousdev.tktest.action.GoLoginAction" method="execute">
+			<result name="success">login.jsp</result>
+		</action>
+
+		<!-- LoginAction -->
+		<action name="LoginAction" class="com.internousdev.tktest.action.LoginAction" method="execute">
+			<result name="success">home.jsp</result>
+			<result name="login">login.jsp</result>
+		</action>
+
+		<!-- LogoutAction -->
+		<action name="LogoutAction" class="com.internousdev.tktest.action.LogoutAction" method="execute">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<!-- CreateUserAction -->
+		<action name="CreateUserAction" class="com.internousdev.tktest.action.CreateUserAction" method="execute">
+			<result name="success">createUser.jsp</result>
+		</action>
+
+		<!-- CreateUserConfirmAction -->
+		<action name="CreateUserConfirmAction" class="com.internousdev.tktest.action.CreateUserConfirmAction" method="execute">
+			<result name="success">createUserConfirm.jsp</result>
+			<result name="back">createUser.jsp</result>
+		</action>
+
+		<!-- CreateUserCompleteAction -->
+		<action name="CreateUserCompleteAction" class="com.internousdev.tktest.action.CreateUserCompleteAction" method="execute">
+			<result name="success">createUserComplete.jsp</result>
+		</action>
+		
+		<!-- DeleteUserConfirmAction -->
+		<action name="DeleteUserConfirmAction" class="com.internousdev.tktest.action.DeleteUserConfirmAction" method="execute">
+			<result name="success">deleteConfirm.jsp</result>
+		</action>
+		
+		<!-- DeleteUserCompleteAction -->
+		<action name="DeleteUserCompleteAction" class="com.internousdev.tktest.action.DeleteUserCompleteAction" method="execute">
+			<result name="success">deleteComplete.jsp</result>
+		</action>
+
+	</package>
+</struts>

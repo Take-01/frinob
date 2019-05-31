@@ -33,6 +33,8 @@ public class DeletePostCompleteAction extends ActionSupport implements SessionAw
 				session.remove("body");
 				session.remove("categoryId");
 				session.remove("categoryName");
+				session.remove("registDate");
+				session.remove("updateDate");
 				
 				result = SUCCESS;
 			}

@@ -6,28 +6,27 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>ホーム</title>
+	<title>投稿一覧</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>
 	<jsp:include page="header.jsp"/>
-
+	
 	<div id="main">
-		<h1>（サイト名）へようこそ！</h1>
-		<p>
-			（サイト名）はブログより手軽に、交流できる自由帳、がテーマのサイトです。<br>
-			毎日のちょっとしたできごとや、学習用のメモ、レシピの覚書など、ブログは面倒だけどちょっと記録に残したい、というときにおすすめです。<br>
-			他のユーザーや投稿をお気に入り登録することもできます。<br>
-			シンプルで使いやすいサイトを目指しています。
-		</p>
-		<div>
-			<h4>あなたも参加してみませんか？</h4>
-			<a href='<s:url action="CreateUserAction"/>'><button>新規登録</button></a>
-		</div>
-		<div>
-			<h5>もう登録済みですか？</h5>
-			<a href='<s:url action="GoLoginAction"/>'><button>ログイン</button></a>
-		</div>
+		<s:if test="postList == null || postList.isEmpty()">
+			<h1>投稿情報がありません。</h1>
+		</s:if>
+		<s:else>
+			<s:iterator value="postList">
+			<div class="postBlock">
+				<a class="postLink" href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
+				<h3><s:property value="title"/></h3>
+				<p><s:property value="body"/></p>
+				<p><s:property value="writerId"/></p>
+			</div>
+			</s:iterator>
+		</s:else>
 	</div>
 </body>
 </html>

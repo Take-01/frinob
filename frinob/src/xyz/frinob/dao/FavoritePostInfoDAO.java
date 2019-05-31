@@ -73,7 +73,8 @@ public class FavoritePostInfoDAO {
 		
 		List<FavoritePostInfoDTO> favPostList = new ArrayList<FavoritePostInfoDTO>();
 		DBConnector dbConnector = new DBConnector();
-		String sql = "SELECT fpi.id, fpi.user_id, fpi.post_id, fpi.post_tag, "
+		String sql = "SELECT fpi.id, fpi.user_id, fpi.post_id, "
+				+ "fpi.post_tag1, fpi.post_tag2, fpi.post_tag3, fpi.post_tag4, fpi.post_tag5, "
 				+ "fpi.regist_date as fav_regist_date, fpi.update_date as fav_update_date, "
 				+ "pi.writer_id, pi.title, pi.body, pi.image_file_path, pi.image_file_name, "
 				+ "pi.regist_date as post_regist_date, pi.update_date as post_update_date "
@@ -92,7 +93,11 @@ public class FavoritePostInfoDAO {
 				favPostDTO.setId(rs.getInt("id"));
 				favPostDTO.setUserId(rs.getString("user_id"));
 				favPostDTO.setFavPostId(rs.getInt("post_id"));
-				favPostDTO.setPostTag(rs.getString("post_tag"));
+				favPostDTO.setPostTag1(rs.getString("post_tag1"));
+				favPostDTO.setPostTag2(rs.getString("post_tag2"));
+				favPostDTO.setPostTag3(rs.getString("post_tag3"));
+				favPostDTO.setPostTag4(rs.getString("post_tag4"));
+				favPostDTO.setPostTag5(rs.getString("post_tag5"));
 				favPostDTO.setFavRegistDate(rs.getString("fav_regist_date"));
 				favPostDTO.setFavUpdateDate(rs.getString("fav_update_date"));
 				favPostDTO.setWriterId(rs.getString("writer_id"));
@@ -154,7 +159,7 @@ public class FavoritePostInfoDAO {
 			ps.setInt(2, postId);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				int count = rs.getInt("count");
+				int count = rs.getInt("count(*)");
 				if(count > 0) {
 					result = true;
 				}

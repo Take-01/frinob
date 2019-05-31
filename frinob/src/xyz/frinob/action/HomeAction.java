@@ -10,7 +10,6 @@ import xyz.frinob.dto.PostInfoDTO;
 public class HomeAction extends ActionSupport {
 
 	private List<PostInfoDTO> postList;
-	private PostInfoDTO postInfoDTO;
 
 	public String execute() {
 		
@@ -22,10 +21,6 @@ public class HomeAction extends ActionSupport {
 
 	public List<PostInfoDTO> getPostList() {
 		return this.postList;
-	}
-	
-	public PostInfoDTO getPostInfoDTO() {
-		return this.postInfoDTO;
 	}
 	
 }

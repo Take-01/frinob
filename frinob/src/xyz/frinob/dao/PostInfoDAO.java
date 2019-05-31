@@ -146,7 +146,7 @@ public class PostInfoDAO {
 		
 		PostInfoDTO postInfoDTO = new PostInfoDTO();
 		DBConnector dbConnector = new DBConnector();
-		String sql = "SELECT pi.id, pi.wirter_id, pi.title, pi.body, pi.category, "
+		String sql = "SELECT pi.id, pi.writer_id, pi.title, pi.body, pi.category, "
 				+ "pi.image_file_path, pi.image_file_name, pi.regist_date, pi.update_date, "
 				+ "ca.category_name, ui.user_name FROM post_info as pi LEFT JOIN category as ca "
 				+ "ON pi.category = ca.category_id LEFT JOIN user_info as ui "

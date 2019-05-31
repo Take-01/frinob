@@ -1,7 +1,7 @@
-tomcatDir=C:/Users/Kaori/pleiades/tomcat/8
+tomcatDir=C:/pleiades/tomcat/7
 eclipse.preferences.version=1
 fixTomcatHomeBug=fixed
-contextsDir=C:/Users/Kaori/pleiades/tomcat/8/conf/Catalina/localhost
-tomcatVersion=tomcatV8
+contextsDir=C:/pleiades/tomcat/7/conf/Catalina/localhost
+tomcatVersion=tomcatV7
 computeSourcePath=true
-tomcatConfigFile=C:/Users/Kaori/pleiades/tomcat/8/conf/server.xml
+tomcatConfigFile=C:/pleiades/tomcat/7/conf/server.xml

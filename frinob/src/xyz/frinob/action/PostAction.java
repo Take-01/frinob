@@ -24,9 +24,6 @@ public class PostAction extends ActionSupport implements SessionAware {
 			session.put("postFlg", 1);
 			result = "login";
 		} else {
-			if(session.containsKey("postFlg") && session.get("postFlg").equals(1)) {
-				session.remove("postFlg");
-			}
 			if(backFlg != 1) { //投稿確認画面からの遷移でない
 				session.remove("title");
 				session.remove("body");

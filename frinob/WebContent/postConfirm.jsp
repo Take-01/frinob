@@ -7,7 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>投稿確認</title>
-	<script type="text/javascript" src="js/tktest.js"></script>
+	<script type="text/javascript" src="./js/tktest.js"></script>
 </head>
 
 <body>
