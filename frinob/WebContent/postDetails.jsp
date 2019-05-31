@@ -26,7 +26,7 @@
 		
 		<s:form id="postDetailsForm" method="post">
 			<s:hidden name="backFlg" id="backFlg"/>
-			<s:submit value="戻る" onClick="goPostDetailsAction()"/>
+			<s:submit value="戻る" onClick="goHomeAction()"/>
 		</s:form>
 		
 		<%-- <s:if test="isRegistered">
