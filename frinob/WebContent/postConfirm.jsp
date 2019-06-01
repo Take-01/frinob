@@ -7,12 +7,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>投稿確認</title>
-	<script type="text/javascript" src="./js/tktest.js"></script>
+	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 
 <body>
 	<jsp:include page="header.jsp"/>
-	
+
 	<div id="main">
 		<h1>以下の内容で投稿します。</h1>
 		<table>
@@ -29,7 +29,7 @@
 				<td><s:property value="#session.categoryName"/></td>
 			</tr>
 		</table>
-		
+
 		<s:form id="postForm" method="post">
 			<s:submit value="投稿" onClick="goPostCompleteAction()"/>
 			<s:hidden name="backFlg" id="backFlg" value=""/>

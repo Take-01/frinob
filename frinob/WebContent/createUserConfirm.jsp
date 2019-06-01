@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ユーザー登録確認</title>
-	<script type="text/javascript" src="./js/tktest.js"></script>
+	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 
 <body>

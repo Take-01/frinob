@@ -7,12 +7,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>投稿詳細</title>
-	<script type="text/javascript" src="./js/tktest.js"></script>
+	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 
 <body>
 	<jsp:include page="header.jsp"/>
-	
+
 	<div id="main">
 		<div>
 			<h1><s:property value="#session.title"/></h1>
@@ -23,12 +23,12 @@
 				<s:property value="#session.body"/>
 			</div>
 		</div>
-		
+
 		<s:form id="postDetailsForm" method="post">
 			<s:hidden name="backFlg" id="backFlg"/>
 			<s:submit value="戻る" onClick="goHomeAction()"/>
 		</s:form>
-		
+
 		<%-- <s:if test="isRegistered">
 			<a href='<s:url action="RevokeFavoritePostAction"/>'><button>お気に入り解除</button></a>
 		</s:if>

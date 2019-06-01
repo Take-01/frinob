@@ -7,12 +7,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>投稿削除確認</title>
-	<script type="text/javascript" src="./js/tktest.js"></script>
+	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 
 <body>
 	<jsp:include page="header.jsp"/>
-	
+
 	<div id="main">
 		<h1>この投稿を削除します。</h1>
 		<table>
@@ -37,7 +37,7 @@
 				<td><s:property value="#session.updateDate"/></td>
 			</tr>
 		</table>
-		
+
 		<s:form id="deletePostForm" method="post">
 			<s:submit value="削除" action="goDeletePostCompleteAction()"/>
 			<s:hidden name="backFlg" id="backFlg" value=""/>
