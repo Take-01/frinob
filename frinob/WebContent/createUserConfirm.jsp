@@ -45,5 +45,9 @@
 			</s:form>
 		</div>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

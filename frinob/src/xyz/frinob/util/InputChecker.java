@@ -57,7 +57,7 @@ public class InputChecker {
 	 */
 	public String checkLength(String input, String propertyName, int minLength, int maxLength) {
 
-		String message = "";
+		String message = null;
 
 		if(StringUtils.length(input) < minLength || StringUtils.length(input) > maxLength) {
 			message = propertyName + "は" + minLength + "文字以上、" + maxLength + "文字以下で入力してください。";
@@ -121,7 +121,7 @@ public class InputChecker {
 
 		//文字数の警告メッセージを取得
 		String lengthMessage = checkLength(input, propertyName, minLength, maxLength);
-		if(!lengthMessage.equals("")) {
+		if(lengthMessage != null) {
 			messageList.add(lengthMessage);
 		}
 

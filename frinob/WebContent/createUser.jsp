@@ -39,5 +39,9 @@
 			<s:submit value="新規登録"/>
 		</s:form>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

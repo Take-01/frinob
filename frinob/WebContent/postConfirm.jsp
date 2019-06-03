@@ -36,5 +36,9 @@
 			<s:submit value="戻る" onClick="goPostAction()"/>
 		</s:form>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

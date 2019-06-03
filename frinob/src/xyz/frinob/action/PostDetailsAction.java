@@ -25,6 +25,7 @@ public class PostDetailsAction extends ActionSupport implements SessionAware {
 			FavoritePostInfoDAO favPostDAO = new FavoritePostInfoDAO();
 			isRegistered = favPostDAO.isRegistered(session.get("userId").toString(), postId);
 		}
+
 		// 投稿詳細情報を取得
 		PostInfoDAO postInfoDAO = new PostInfoDAO();
 		PostInfoDTO postInfoDTO = postInfoDAO.getPostDetails(postId);

@@ -11,7 +11,7 @@
 
 <body>
 	<jsp:include page="header.jsp"/>
-	
+
 	<div id="main">
 		<!-- タイトル入力チェックメッセージ -->
 		<s:if test="titleMessageList != null && titleMessageList.size() > 0">
@@ -21,7 +21,7 @@
 		<s:if test="bodyMessage != null && bodyMessage.length() > 0">
 			<s:property value="bodyMessage"/>
 		</s:if>
-		
+
 		<!-- 投稿フォーム -->
 		<s:form action="PostConfirmAction" method="post">
 			<s:textfield name="title" placeholder="タイトル" value="%{#session.title}"/>
@@ -30,5 +30,9 @@
 			<s:submit value="投稿"/>
 		</s:form>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

@@ -12,11 +12,15 @@
 
 <body>
 	<jsp:include page="header.jsp"/>
-	
+
 	<div id="main">
 		<h1>ユーザーを削除しました。</h1>
 		<h3>自動でホーム画面へ遷移します。</h3>
 		<p>遷移しない場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

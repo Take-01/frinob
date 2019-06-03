@@ -16,7 +16,7 @@
 	<div id="main">
 		<div>
 			<h1><s:property value="#session.title"/></h1>
-			<h6><s:property value="#session.writerName"/></h6>
+			<h3><s:property value="#session.writerName"/></h3>
 			<p><s:property value="#session.categoryName"/></p>
 			<p>投稿日：<s:property value="#session.registDate"/>　更新日：<s:property value="#session.updateDate"/></p>
 			<div>
@@ -36,5 +36,9 @@
 			<a href='<s:url action="RegistFavoritePostAction"/>'><button>お気に入り登録</button></a>
 		</s:else> --%>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

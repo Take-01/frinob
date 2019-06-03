@@ -12,14 +12,14 @@ import xyz.frinob.dao.CategoryDAO;
 import xyz.frinob.dto.CategoryDTO;
 
 public class PostAction extends ActionSupport implements SessionAware {
-	
+
 	private Map<String, Object> session;
 	private int backFlg;
-	
+
 	public String execute() {
-		
+
 		String result = ERROR;
-		
+
 		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			session.put("postFlg", 1);
 			result = "login";
@@ -30,6 +30,7 @@ public class PostAction extends ActionSupport implements SessionAware {
 				session.remove("categoryName");
 				session.remove("categoryId");
 			}
+
 			//カテゴリーIDとカテゴリー名のリストをセッションに格納
 			CategoryDAO categoryDAO = new CategoryDAO();
 			List<CategoryDTO> categoryList = categoryDAO.getCategoryList();
@@ -40,11 +41,11 @@ public class PostAction extends ActionSupport implements SessionAware {
 		}
 		return result;
 	}
-	
+
 	public void setBackFlg(int backFlg) {
 		this.backFlg = backFlg;
 	}
-	
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

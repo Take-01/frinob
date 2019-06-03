@@ -44,5 +44,9 @@
 			<s:submit value="戻る" action="goDeletePostConfirmAction()"/>
 		</s:form>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

@@ -12,11 +12,15 @@
 
 <body>
 	<jsp:include page="header.jsp"/>
-	
+
 	<div id="main">
 		<h1>投稿を削除しました。</h1>
 		<p>自動でマイページへ遷移します。</p>
 		<p>ページが変わらない場合は<a href='<s:url action="MyPageAction"/>'>こちら</a></p>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

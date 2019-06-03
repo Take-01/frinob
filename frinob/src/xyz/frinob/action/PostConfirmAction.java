@@ -24,10 +24,11 @@ public class PostConfirmAction extends ActionSupport implements SessionAware {
 
 		String result = ERROR;
 
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			return result = "sessionError";
 		}
-		
+
+		//カテゴリー名を取得する
 		@SuppressWarnings("unchecked")
 		List<CategoryDTO> categoryDTOList = (List<CategoryDTO>) session.get("categoryList");
 		for(CategoryDTO categoryDTO:categoryDTOList) {
@@ -46,8 +47,8 @@ public class PostConfirmAction extends ActionSupport implements SessionAware {
 		InputChecker inputChecker = new InputChecker();
 		titleMessageList = inputChecker.getMessages(title, "タイトル", 1, 30, 1, 2, 3, 4, 5, 6);
 		bodyMessage = inputChecker.checkLength(body, "本文", 1, 500);
-		
-		if(CollectionUtils.isNotEmpty(titleMessageList) || !bodyMessage.equals("")) {
+
+		if(CollectionUtils.isNotEmpty(titleMessageList) || bodyMessage != null) {
 			result = "back";
 		} else {
 			//入力値エラーなし
@@ -55,31 +56,31 @@ public class PostConfirmAction extends ActionSupport implements SessionAware {
 		}
 		return result;
 	}
-	
+
 	public String getTitle() {
 		return this.title;
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getBody() {
 		return this.body;
 	}
-	
+
 	public void setBody(String body) {
 		this.body = body;
 	}
-	
+
 	public int getCategoryId() {
 		return this.categoryId;
 	}
-	
+
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

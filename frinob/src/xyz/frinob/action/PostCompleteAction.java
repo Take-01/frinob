@@ -9,26 +9,26 @@ import com.opensymphony.xwork2.ActionSupport;
 import xyz.frinob.dao.PostInfoDAO;
 
 public class PostCompleteAction extends ActionSupport implements SessionAware {
-	
+
 	private Map<String, Object> session;
-	
+
 	public String execute() {
-		
+
 		String result = ERROR;
-		
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			return result = "sessionError";
 		}
-		
+
 		String userId = session.get("userId").toString();
 		String title = session.get("title").toString();
 		String body = session.get("body").toString();
 		int category = Integer.parseInt(session.get("categoryId").toString());
-		
+
 		//データベースに投稿情報を登録する
 		PostInfoDAO postInfoDAO = new PostInfoDAO();
 		int count = postInfoDAO.post(userId, title, body, category);
-		
+
 		if(count > 0) {
 			session.remove("title");
 			session.remove("body");
@@ -38,7 +38,7 @@ public class PostCompleteAction extends ActionSupport implements SessionAware {
 		}
 		return result;
 	}
-	
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

@@ -12,7 +12,7 @@
 
 <body>
 	<jsp:include page="header.jsp"/>
-	
+
 	<div id="main">
 		<s:if test="postList == null || postList.isEmpty()">
 			<h1>投稿情報がありません。</h1>
@@ -23,10 +23,14 @@
 				<a class="postLink" href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
 				<h3><s:property value="title"/></h3>
 				<p><s:property value="body"/></p>
-				<p><s:property value="writerId"/></p>
+				<p><s:property value="writerName"/></p>
 			</div>
 			</s:iterator>
 		</s:else>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

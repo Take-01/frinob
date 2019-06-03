@@ -27,7 +27,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		String result = ERROR;
 
-		if(session.containsKey("loggedIn")) {
+		if(session.containsKey("loggedIn") && session.get("loggedIn").equals(1)) {
 			return result;
 		}
 
@@ -67,6 +67,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return result;
 	}
 
+	public String getUserId() {
+		return this.userId;
+	}
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
@@ -82,7 +86,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public List<String> getPasswordMessageList() {
 		return this.passwordMessageList;
 	}
-	
+
 	public String getNotMatchMessage() {
 		return this.notMatchMessage;
 	}
