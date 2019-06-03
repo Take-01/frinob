@@ -10,7 +10,7 @@ public class InputChecker {
 	/**
 	 * 正規表現を取得する。
 	 *
-	 * @param  number 1:半角英字 2:半角数字 3:ひらがな 4:カタカナ 5:漢字 6:半角記号
+	 * @param  number 1:半角英字 2:半角数字 3:ひらがな 4:カタカナ 5:漢字 6:全角記号 7:全角数字 8:半角記号
 	 * @return 正規表現
 	 *
 	 */
@@ -38,6 +38,12 @@ public class InputChecker {
 					regex.insert(index, "一-龠々");
 					break;
 				case 6:
+					regex.insert(index, "＠。、；：！”＃＄％＆’（）＝～｜－＾￥「｛＋＊」｝＜＞・？＿【】［］『』≪≫〔〕○●◎☆★◇◆□■△▲▽▼×±÷／");
+					break;
+				case 7:
+					regex.insert(index, "０-９");
+					break;
+				case 8:
 					regex.insert(index, "@.,;:!#$%&()'*+/=?^_`{|}~\\-");
 					break;
 			}
@@ -70,7 +76,7 @@ public class InputChecker {
 	 * 使用可能な文字種のメッセージを取得する。
 	 *
 	 * @param propertyName 項目名
-	 * @param number 1:半角英字 2:半角数字 3:ひらがな 4:カタカナ 5:漢字 6:半角記号
+	 * @param number 1:半角英字 2:半角数字 3:ひらがな 4:カタカナ 5:漢字 6:全角記号 7:全角数字 8:半角記号
 	 * @return 項目に使用できる文字種のメッセージ
 	 */
 	public String getCharacterType(String propertyName, int ... number) {
@@ -79,24 +85,30 @@ public class InputChecker {
 
 		for(int num:number) {
 			switch(num) {
-			case 1:
-				characterType += "【半角英字】";
-				break;
-			case 2:
-				characterType += "【半角数字】";
-				break;
-			case 3:
-				characterType += "【ひらがな】";
-				break;
-			case 4:
-				characterType += "【カタカナ】";
-				break;
-			case 5:
-				characterType += "【漢字】";
-				break;
-			case 6:
-				characterType += "【半角記号】";
-				break;
+				case 1:
+					characterType += "【半角英字】";
+					break;
+				case 2:
+					characterType += "【半角数字】";
+					break;
+				case 3:
+					characterType += "【ひらがな】";
+					break;
+				case 4:
+					characterType += "【カタカナ】";
+					break;
+				case 5:
+					characterType += "【漢字】";
+					break;
+				case 6:
+					characterType += "【全角記号】";
+					break;
+				case 7:
+					characterType += "【全角数字】";
+					break;
+				case 8:
+					characterType += "【半角記号】";
+					break;
 			}
 		}
 
@@ -111,7 +123,7 @@ public class InputChecker {
 	 * @param propertyName 項目名
 	 * @param minLength 最小文字数
 	 * @param maxLength 最大文字数
-	 * @param number  1:半角英字 2:半角数字 3:ひらがな 4:カタカナ 5:漢字 6:半角記号
+	 * @param number  1:半角英字 2:半角数字 3:ひらがな 4:カタカナ 5:漢字 6:全角記号 7:全角数字 8:半角記号
 	 * @return メッセージのリスト
 	 */
 	public List<String> getMessages(String input, String propertyName, int minLength, int maxLength, int ... number) {
@@ -134,11 +146,15 @@ public class InputChecker {
 		return messageList;
 	}
 
-	//メールアドレスの入力チェックをする
+	/**
+	 * メールアドレスの入力チェックをする
+	 * @param input チェックするメールアドレス
+	 * @return 入力値が不正ならメッセージ
+	 */
 	public List<String> checkEmailAddress(String input) {
 
 		List<String> messageList = new ArrayList<String>();
-		String regularExpression = "^[\\w!#$%&'=^~{|}+*./?_-]+@[\\w-]+(\\.[\\w-]+)*$";
+		String regularExpression = "^[\\w!#$%&'=^~{|}+*./?_-]+@[\\w-]+(\\.[\\w-]+)+$";
 		if(input == null || !input.matches(regularExpression)) {
 			messageList.add("登録できないメールアドレスです。");
 			messageList.add("メールアドレスは【半角英数字記号】を使い、【xxx@xxx】の形式で入力してください。");

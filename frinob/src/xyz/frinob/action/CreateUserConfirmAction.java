@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import xyz.frinob.util.InputChecker;
+import xyz.frinob.util.SaftyPassword;
 
 public class CreateUserConfirmAction extends ActionSupport implements SessionAware {
 
@@ -31,20 +32,22 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 		}
 
 		session.put("userId", userId);
-		session.put("password", password);
 		session.put("userName", userName);
 		session.put("email", email);
 
 		//入力チェック
 		InputChecker inputChecker = new InputChecker();
-		userIdMessageList = inputChecker.getMessages(userId, "ユーザーID", 4, 16, 1, 2, 6);
-		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 6);
-		userNameMessageList = inputChecker.getMessages(userName, "ユーザー名", 3, 20, 1, 2, 3, 4, 5, 6);
+		userIdMessageList = inputChecker.getMessages(userId, "ユーザーID", 4, 16, 1, 2, 8);
+		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 8);
+		userNameMessageList = inputChecker.getMessages(userName, "ユーザー名", 3, 20, 1, 2, 3, 4, 5, 8);
 		emailMessageList = inputChecker.checkEmailAddress(email);
 
 		if (CollectionUtils.isNotEmpty(userIdMessageList) || CollectionUtils.isNotEmpty(passwordMessageList) || CollectionUtils.isNotEmpty(userNameMessageList) || CollectionUtils.isNotEmpty(emailMessageList)) {
 			result = "back";
 		} else {
+			SaftyPassword saftyPassword = new SaftyPassword();
+			String passwordHash = saftyPassword.getPasswordHash(password, userId);
+			session.put("password", passwordHash);
 			result = SUCCESS;
 		}
 		return result;

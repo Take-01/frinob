@@ -104,5 +104,10 @@
 			<result name="success">myPage.jsp</result>
 		</action>
 
+		<!-- MyPostDetailsAction -->
+		<action name="MyPostDetailsAction" class="xyz.frinob.action.MyPostDetailsAction" method="execute">
+			<result name="success">myPostDetails.jsp</result>
+		</action>
+
 	</package>
 </struts>

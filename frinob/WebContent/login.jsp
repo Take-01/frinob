@@ -5,42 +5,49 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>
 	<jsp:include page="header.jsp" />
 
-	<h1>ログイン画面</h1>
+	<div id="main">
+		<h3>ログインしてください</h3>
 
-	<h3>ログインしてください</h3>
+		<!-- ユーザーID入力チェックメッセージ -->
+		<div class="message">
+			<s:if test="userIdMessageList != null && userIdMessageList.size() > 0">
+				<s:iterator value="userIdMessageList">
+					<s:property/><br>
+				</s:iterator>
+			</s:if>
+		</div>
 
-	<!-- ユーザーID入力チェックメッセージ -->
-	<s:if test="userIdMessageList != null && userIdMessageList.size() > 0">
-		<s:iterator value="userIdMessageList">
-			<s:property/><br>
-		</s:iterator>
-	</s:if>
+		<!-- パスワード入力チェックメッセージ -->
+		<div class="message">
+			<s:if test="passwordMessageList != null && passwordMessageList.size() > 0">
+				<s:iterator value="passwordMessageList">
+					<s:property/><br>
+				</s:iterator>
+			</s:if>
+		</div>
 
-	<!-- パスワード入力チェックメッセージ -->
-	<s:if test="passwordMessageList != null && passwordMessageList.size() > 0">
-		<s:iterator value="passwordMessageList">
-			<s:property/><br>
-		</s:iterator>
-	</s:if>
+		<!-- 入力内容が一致しないメッセージ -->
+		<div class="message">
+			<s:if test="notMatchMessage != null">
+				<s:property value="notMatchMessage"/>
+			</s:if>
+		</div>
 
-	<!-- 入力内容が一致しないメッセージ -->
-	<s:if test="notMatchMessage != null">
-		<s:property value="notMatchMessage"/>
-	</s:if>
-
-	<!-- 入力フォーム -->
-	<s:form action="LoginAction" method="post">
-		<s:textfield label="ユーザーID" name="userId" value="%{userId}"/>
-		<s:password label="パスワード" name="password"/>
-		<s:submit value="ログイン"/>
-	</s:form>
+		<!-- 入力フォーム -->
+		<s:form action="LoginAction" method="post">
+			<s:textfield label="ユーザーID" name="userId" value="%{userId}"/>
+			<s:password label="パスワード" name="password"/>
+			<s:submit value="ログイン"/>
+		</s:form>
+	</div>
 
 	<footer>
 		<p>&copy; フリノブ</p>

@@ -14,9 +14,10 @@ import xyz.frinob.dao.PostInfoDAO;
 import xyz.frinob.dao.UserInfoDAO;
 import xyz.frinob.dto.PostInfoDTO;
 import xyz.frinob.util.InputChecker;
+import xyz.frinob.util.SaftyPassword;
 
 public class DeleteUserCompleteAction extends ActionSupport implements SessionAware {
-	
+
 
 	private Map<String, Object> session;
 	private String password;
@@ -29,7 +30,7 @@ public class DeleteUserCompleteAction extends ActionSupport implements SessionAw
 		if (!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
 			return result = "sessionError";
 		}
-		
+
 		//パスワードの入力チェック
 		InputChecker inputChecker = new InputChecker();
 		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 6);
@@ -40,19 +41,19 @@ public class DeleteUserCompleteAction extends ActionSupport implements SessionAw
 		String userId = String.valueOf(session.get("userId"));
 		FavoritePostInfoDAO favPostDAO = new FavoritePostInfoDAO();
 		FavoriteUserInfoDAO favUserDAO = new FavoriteUserInfoDAO();
-		
+
 		// お気に入り投稿を解除する
 		int revokeFavPostCount = favPostDAO.revokeAllFavPost(userId);
 		if (revokeFavPostCount < 0) {
 			return result;
 		}
-		
+
 		// お気に入りユーザーを解除する
 		int revokeFavUserCount = favUserDAO.revokeAllFavUser(userId);
 		if(revokeFavUserCount < 0) {
 			return result;
 		}
-		
+
 		//お気に入りユーザーテーブルから削除する
 		int delFavUserCount = favUserDAO.deleteFavUser(userId);
 		if(delFavUserCount < 0) {
@@ -77,10 +78,12 @@ public class DeleteUserCompleteAction extends ActionSupport implements SessionAw
 				return result;
 			}
 		}
-		
+
 		//ユーザー情報を削除する
+		SaftyPassword saftyPassword = new SaftyPassword();
+		String passwordHash = saftyPassword.getPasswordHash(password, userId);
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
-		int count = userInfoDAO.deleteUser(userId, password);
+		int count = userInfoDAO.deleteUser(userId, passwordHash);
 		if(count > 0) {
 			session.clear();
 			result = SUCCESS;

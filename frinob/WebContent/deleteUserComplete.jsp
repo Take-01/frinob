@@ -6,6 +6,7 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 	<meta http-equiv="refresh" content="2;URL='HomeAction'">
 	<title>ユーザー削除完了</title>
 </head>

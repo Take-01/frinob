@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="refresh" content="2;URL='MyPageAction'">
 	<title>投稿削除完了</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>

@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>フリノブ</title>
+	<meta charset="UTF-8">
+	<title>フリノブ</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>

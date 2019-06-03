@@ -18,7 +18,7 @@ public class PostConfirmAction extends ActionSupport implements SessionAware {
 	private String body;
 	private int categoryId;
 	private List<String> titleMessageList;
-	private String bodyMessage;
+	private List<String> bodyMessageList;
 
 	public String execute() {
 
@@ -45,10 +45,10 @@ public class PostConfirmAction extends ActionSupport implements SessionAware {
 
 		//入力チェック
 		InputChecker inputChecker = new InputChecker();
-		titleMessageList = inputChecker.getMessages(title, "タイトル", 1, 30, 1, 2, 3, 4, 5, 6);
-		bodyMessage = inputChecker.checkLength(body, "本文", 1, 500);
+		titleMessageList = inputChecker.getMessages(title, "タイトル", 1, 30, 3, 4, 5, 6, 7);
+		bodyMessageList = inputChecker.getMessages(body, "本文", 1, 500, 3, 4, 5, 6, 7);
 
-		if(CollectionUtils.isNotEmpty(titleMessageList) || bodyMessage != null) {
+		if(CollectionUtils.isNotEmpty(titleMessageList) || CollectionUtils.isNotEmpty(bodyMessageList)) {
 			result = "back";
 		} else {
 			//入力値エラーなし
@@ -79,6 +79,14 @@ public class PostConfirmAction extends ActionSupport implements SessionAware {
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public List<String> getTitleMessageList() {
+		return this.titleMessageList;
+	}
+
+	public List<String> getBodyMessageList() {
+		return this.bodyMessageList;
 	}
 
 	@Override

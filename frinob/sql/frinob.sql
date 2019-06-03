@@ -19,9 +19,9 @@ create table user_info(
 ;
 
 insert into user_info values
-(1, "guest1", "guest1", "ゲスト1", "guest1@gmail.com", now(), now()),
-(2, "guest2", "guest2", "ゲスト2", "guest2@gmail.com", now(), now()),
-(3, "guest3", "guest3", "ゲスト3", "guest3@gmail.com", now(), now());
+(1, "guest1", "84a5aadfb52a360458afca1d6fec5b4f4d638c8743e471cd0b2e0e524b3224f7", "ゲスト1", "guest1@gmail.com", now(), now()),
+(2, "guest2", "c389e7a4be00a29510ae0bb5cd2fed5f8571de68a536990a841246de60c231b5", "ゲスト2", "guest2@gmail.com", now(), now()),
+(3, "guest3", "75218ef4817396295191656e9e65b6e32d73eb1c0a739aca185bc78e765e4605", "ゲスト3", "guest3@gmail.com", now(), now());
 
 create table post_info(
 	id int primary key not null auto_increment comment "ID",

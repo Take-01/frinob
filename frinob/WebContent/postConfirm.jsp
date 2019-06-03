@@ -3,10 +3,11 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<title>投稿確認</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 
@@ -30,9 +31,9 @@
 			</tr>
 		</table>
 
+		<a href='<s:url action="PostCompleteAction"/>'><button>完了</button></a>
 		<s:form id="postForm" method="post">
-			<s:submit value="投稿" onClick="goPostCompleteAction()"/>
-			<s:hidden name="backFlg" id="backFlg" value=""/>
+			<s:hidden name="backFlg" id="backFlg"/>
 			<s:submit value="戻る" onClick="goPostAction()"/>
 		</s:form>
 	</div>

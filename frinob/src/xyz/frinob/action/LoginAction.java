@@ -9,15 +9,19 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import xyz.frinob.dao.CategoryDAO;
+import xyz.frinob.dao.PostInfoDAO;
 import xyz.frinob.dao.UserInfoDAO;
 import xyz.frinob.dto.CategoryDTO;
+import xyz.frinob.dto.PostInfoDTO;
 import xyz.frinob.dto.UserInfoDTO;
 import xyz.frinob.util.InputChecker;
+import xyz.frinob.util.SaftyPassword;
 
 public class LoginAction extends ActionSupport implements SessionAware {
 
 	private String userId;
 	private String password;
+	private List<PostInfoDTO> postList;
 	private Map<String, Object> session;
 	private List<String> userIdMessageList;
 	private List<String> passwordMessageList;
@@ -33,15 +37,18 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		//入力チェックを行う
 		InputChecker inputChecker = new InputChecker();
-		userIdMessageList = inputChecker.getMessages(userId, "ユーザーID", 4, 16, 1, 2, 6);
-		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 6);
+		userIdMessageList = inputChecker.getMessages(userId, "ユーザーID", 4, 16, 1, 2, 8);
+		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 8);
 
 		if(CollectionUtils.isNotEmpty(userIdMessageList) || CollectionUtils.isNotEmpty(passwordMessageList)) {
 			return result = "login";
 		}
 
+		SaftyPassword saftyPassword = new SaftyPassword();
+		String passwordHash = saftyPassword.getPasswordHash(password, userId);
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
-		if(!userInfoDAO.isExistsUser(userId, password)) { //登録済みユーザーかチェック
+
+		if(!userInfoDAO.isExistsUser(userId, passwordHash)) { //登録済みユーザーかチェック
 			notMatchMessage = "ユーザーIDかパスワードが間違っています。";
 		} else {
 
@@ -51,9 +58,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				session.put("loggedIn", 1);
 				session.put("userId", userInfoDTO.getUserId());
 				session.put("userName", userInfoDTO.getUserName());
+
+				//ホーム画面へ遷移するので投稿一覧を取得
+				PostInfoDAO postInfoDAO = new PostInfoDAO();
+				postList = postInfoDAO.getPostList();
+
 				result = SUCCESS;
 
-				if (session.containsKey("postFlg") && session.get("postFlg").equals(1)) {
+				if (session.containsKey("postFlg") && session.get("postFlg").equals(1)) { //投稿ボタンを押下して遷移してきた
 					CategoryDAO categoryDAO = new CategoryDAO();
 					List<CategoryDTO> categoryList = categoryDAO.getCategoryList();
 					if(CollectionUtils.isNotEmpty(categoryList)) {
@@ -77,6 +89,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<PostInfoDTO> getPostList() {
+		return this.postList;
 	}
 
 	public List<String> getUserIdMessageList() {

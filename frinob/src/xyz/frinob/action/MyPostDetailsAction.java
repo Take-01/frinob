@@ -21,7 +21,7 @@ public class MyPostDetailsAction extends ActionSupport implements SessionAware {
 		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			result = "sessionError";
 		} else {
-			
+
 			//投稿詳細を取得
 			PostInfoDAO postInfoDAO = new PostInfoDAO();
 			PostInfoDTO postInfoDTO = postInfoDAO.getPostDetails(postId);
@@ -29,8 +29,6 @@ public class MyPostDetailsAction extends ActionSupport implements SessionAware {
 				session.put("postId", postId);
 				session.put("title", postInfoDTO.getTitle());
 				session.put("body", postInfoDTO.getBody());
-				session.put("writerId", postInfoDTO.getWriterId());
-				session.put("writerName", postInfoDTO.getWriterName());
 				session.put("categoryId", postInfoDTO.getCategoryId());
 				session.put("categoryName", postInfoDTO.getCategoryName());
 				session.put("registDate", postInfoDTO.getRegistDate());
@@ -40,6 +38,10 @@ public class MyPostDetailsAction extends ActionSupport implements SessionAware {
 			}
 		}
 		return result;
+	}
+
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 
 	@Override

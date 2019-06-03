@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>マイページ</title>
-<link rel="stylesheet" type="text/css" href="./css/frinob.css">
+	<meta charset="UTF-8">
+	<title>マイページ</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 			<s:iterator value="postList">
 				<div class="postBlock">
 					<a class="postLink"
-						href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
+						href='<s:url value="MyPostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
 					<h3>
 						<s:property value="title" />
 					</h3>

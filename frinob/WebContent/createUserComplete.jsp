@@ -6,9 +6,10 @@
 <html lang="ja">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="2;URL='GoLoginAction'">
-<title>ユーザー登録完了</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="2;URL='GoLoginAction'">
+	<title>ユーザー登録完了</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>

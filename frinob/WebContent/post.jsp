@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>新規投稿</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>
@@ -18,15 +19,15 @@
 			<s:iterator value="titleMessageList"><s:property /><br></s:iterator>
 		</s:if>
 		<!-- 本文入力チェックメッセージ -->
-		<s:if test="bodyMessage != null && bodyMessage.length() > 0">
-			<s:property value="bodyMessage"/>
+		<s:if test="bodyMessageList != null && bodyMessageList.size() > 0">
+			<s:iterator value="bodyMessageList"><s:property /><br></s:iterator>
 		</s:if>
 
 		<!-- 投稿フォーム -->
 		<s:form action="PostConfirmAction" method="post">
 			<s:textfield name="title" placeholder="タイトル" value="%{#session.title}"/>
 			<s:textarea name="body" placeholder="本文" value="%{#session.body}"/>
-			<s:select name="categoryId" list="%{#session.categoryList}" listKey="%{categoryId}" listValue="%{categoryName}"/>
+			<s:select name="categoryId" list="%{#session.categoryList}" listKey="%{categoryId}" listValue="%{categoryName}" value="%{#session.categoryId}"/>
 			<s:submit value="投稿"/>
 		</s:form>
 	</div>

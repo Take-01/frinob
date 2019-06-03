@@ -3,10 +3,11 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<title>投稿詳細</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 

@@ -8,6 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>新規ユーザー登録</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>

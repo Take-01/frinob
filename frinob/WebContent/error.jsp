@@ -7,11 +7,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>エラー</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>
-	<h1>システムエラーが発生しました。</h1>
-	<p>お手数ですが管理者にお問い合わせください。</p>
+	<div id="main">
+		<h1>システムエラーが発生しました。</h1>
+		<p>お手数ですが管理者にお問い合わせください。</p>
+	</div>
 
 	<footer>
 		<p>&copy; フリノブ</p>

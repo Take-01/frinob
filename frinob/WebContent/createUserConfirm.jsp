@@ -8,6 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ユーザー登録確認</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 

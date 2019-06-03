@@ -176,17 +176,14 @@ public class PostInfoDAO {
 	}
 
 	/**
-	 * 投稿のリストを取得する。同じ投稿者のものは3件まで取得する。
+	 * 投稿のリストを取得する。
 	 * @return 投稿情報のリスト
 	 */
 	public List<PostInfoDTO> getPostList() {
 
 		List<PostInfoDTO> postInfoList = new ArrayList<PostInfoDTO>();
 		DBConnector dbConnector = new DBConnector();
-		String sql = "SELECT * FROM post_info as p1 WHERE "
-				+ "(SELECT COUNT(*) FROM post_info as p2 WHERE p2.writer_id = p1.writer_id) < 4 "
-				+ "ORDER BY regist_date LIMIT 50";
-
+		String sql = "SELECT * FROM post_info";
 		try(Connection con = dbConnector.getConnection()) {
 
 			PreparedStatement ps = con.prepareStatement(sql);

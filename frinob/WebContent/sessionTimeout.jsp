@@ -8,12 +8,15 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="refresh" content="5;URL='IndexAction'">
 	<title>セッションタイムアウト</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>
-	<h1>ログインしていません。</h1>
-	<p>自動でインデックス画面へ遷移します。</p>
-	<p>ページが変わらない場合は<a href='<s:url action="IndexAction"/>'>こちら</a></p>
+	<div id="main">
+		<h1>ログインしていません。</h1>
+		<p>自動でインデックス画面へ遷移します。</p>
+		<p>ページが変わらない場合は<a href='<s:url action="IndexAction"/>'>こちら</a></p>
+	</div>
 
 	<footer>
 		<p>&copy; フリノブ</p>

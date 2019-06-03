@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ユーザー削除確認</title>
+	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
 </head>
 
 <body>
