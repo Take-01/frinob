@@ -33,3 +33,8 @@ function goHomeAction() {
 	document.getElementById("backFlg").value="1";
 	document.getElementById("postDetailsForm").action="HomeAction";
 }
+
+function goUpdateUserNameAndEmailAction() {
+	document.getElementById("backFlg").value="1";
+	document.getElementById("UpdateForm").action="UpdateUserNameAndEmailAction";
+}

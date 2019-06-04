@@ -9,7 +9,7 @@ import xyz.frinob.dto.UserInfoDTO;
 import xyz.frinob.util.DBConnector;
 
 public class UserInfoDAO {
-	
+
 	/**
 	 * ユーザーIDとパスワードに一致するデータが登録されているか調べる。
 	 * @param userId ユーザーID
@@ -17,19 +17,19 @@ public class UserInfoDAO {
 	 * @return 登録されていればtrue
 	 */
 	public boolean isExistsUser(String userId, String password) {
-		
+
 		boolean result = false;
 		DBConnector dbConnector = new DBConnector();
 		String sql = "SELECT COUNT(*) FROM user_info WHERE user_id = ? AND password = ?";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ps.setString(2, password);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
+
 			while(rs.next()) {
 				if(rs.getInt("count(*)") > 0) {
 					result = true;
@@ -105,7 +105,7 @@ public class UserInfoDAO {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * ユーザーを削除する。
 	 * @param userId ユーザーID
@@ -113,26 +113,53 @@ public class UserInfoDAO {
 	 * @return 削除件数(正常なら1)
 	 */
 	public int deleteUser(String userId, String password) {
-		
+
 		int result = 0;
-		
+
 		DBConnector dbConnector = new DBConnector();
-		
+
 		String sql = "DELETE FROM user_info WHERE user_id = ? AND password = ?";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ps.setString(2, password);
-			
+
 			result = ps.executeUpdate();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
+	/**
+	 * ユーザー名とメールアドレスを変更する。
+	 * @param userId ユーザーID
+	 * @param userName ユーザー名
+	 * @param email メールアドレス
+	 * @return 変更件数(正常なら1)
+	 */
+	public int updateUserNameAndEmail(String userId, String userName, String email) {
+
+		int result = 0;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "UPDATE user_info SET user_name = ?, email = ? WHERE user_id = ?";
+
+		try(Connection con = dbConnector.getConnection()) {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userName);
+			ps.setString(2, email);
+			ps.setString(3, userId);
+
+			result = ps.executeUpdate();
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

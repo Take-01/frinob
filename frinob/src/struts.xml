@@ -62,6 +62,27 @@
 			<result name="success">createUserComplete.jsp</result>
 		</action>
 
+		<!-- UpdateUserInfoAction -->
+		<action name="UpdateUserInfoAction" class="xyz.frinob.action.UpdateUserInfoAction" method="execute">
+			<result name="success">updateUserInfo.jsp</result>
+		</action>
+
+		<!-- UpdateUserNameAndEmailAction -->
+		<action name="UpdateUserNameAndEmailAction" class="xyz.frinob.action.UpdateUserNameAndEmailAction" method="execute">
+			<result name="success">updateUserNameAndEmail.jsp</result>
+		</action>
+
+		<!-- UpdateUserNameAndEmailConfirmAction -->
+		<action name="UpdateUserNameAndEmailConfirmAction" class="xyz.frinob.action.UpdateUserNameAndEmailConfirmAction" method="execute">
+			<result name="success">updateUserNameAndEmailConfirm.jsp</result>
+			<result name="back">updateUserNameAndEmail.jsp</result>
+		</action>
+
+		<!-- UpdateUserNameAndEmailCompleteAction -->
+		<action name="UpdateUserNameAndEmailCompleteAction" class="xyz.frinob.action.UpdateUserNameAndEmailCompleteAction" method="execute">
+			<result name="success">updateUserNameAndEmailComplete.jsp</result>
+		</action>
+
 		<!-- DeleteUserConfirmAction -->
 		<action name="DeleteUserConfirmAction" class="xyz.frinob.action.DeleteUserConfirmAction" method="execute">
 			<result name="success">deleteConfirm.jsp</result>
