@@ -50,6 +50,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		if(!userInfoDAO.isExistsUser(userId, passwordHash)) { //登録済みユーザーかチェック
 			notMatchMessage = "ユーザーIDかパスワードが間違っています。";
+			result = "back";
 		} else {
 
 			UserInfoDTO userInfoDTO = userInfoDAO.getUserInfo(userId);

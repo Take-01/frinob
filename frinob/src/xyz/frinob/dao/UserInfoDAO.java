@@ -162,4 +162,31 @@ public class UserInfoDAO {
 		}
 		return result;
 	}
+
+	/**
+	 * パスワードを変更する
+	 * @param oldPassword 変更前のパスワード
+	 * @param newPassword 新しいパスワード
+	 * @return 変更件数(正常なら1)
+	 */
+	public int updatePassword(String userId, String oldPassword, String newPassword) {
+
+		int result = 0;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "UPDATE user_info SET password = ? WHERE user_id = ? AND password = ?";
+
+		try(Connection con = dbConnector.getConnection()) {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, newPassword);
+			ps.setString(2, userId);
+			ps.setString(3, oldPassword);
+
+			result = ps.executeUpdate();
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

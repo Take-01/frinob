@@ -32,7 +32,7 @@
 			<s:submit value="戻る" onClick="goUpdateUserNameAndEmailAction()"/>
 		</form>
 
-		<a href='<s:url action="UpdateUserNameAndCompleteAction"/>'>完了</a>
+		<a href='<s:url action="UpdateUserNameAndEmailCompleteAction"/>'><button>完了</button></a>
 	</div>
 </body>
 </html>

@@ -83,6 +83,17 @@
 			<result name="success">updateUserNameAndEmailComplete.jsp</result>
 		</action>
 
+		<!-- UpdatePasswordAction -->
+		<action name="UpdatePasswordAction" class="xyz.frinob.action.UpdatePasswordAction" method="execute">
+			<result name="success">updatePassword.jsp</result>
+		</action>
+
+		<!-- UpdatePasswordCompleteAction -->
+		<action name="UpdatePasswordCompleteAction" class="xyz.frinob.action.UpdatePasswordCompleteAction" method="execute">
+			<result name="back">updatePassword.jsp</result>
+			<result name="success">updatePasswordComplete.jsp</result>
+		</action>
+
 		<!-- DeleteUserConfirmAction -->
 		<action name="DeleteUserConfirmAction" class="xyz.frinob.action.DeleteUserConfirmAction" method="execute">
 			<result name="success">deleteConfirm.jsp</result>
