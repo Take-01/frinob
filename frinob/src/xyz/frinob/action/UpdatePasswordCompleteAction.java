@@ -25,7 +25,7 @@ public class UpdatePasswordCompleteAction extends ActionSupport implements Sessi
 
 		String result = ERROR;
 
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			result = "sessionError";
 		} else {
 			//入力チェック
@@ -33,7 +33,7 @@ public class UpdatePasswordCompleteAction extends ActionSupport implements Sessi
 			String[] passwords = {oldPassword, newPassword, newPasswordConfirm};
 			List<String> passMsgList = null;
 			for(String password:passwords) { //エラーになるものが出た時点でループを終える
-				passMsgList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 8);
+				passMsgList = inputChecker.getMessageList(password, "パスワード", 6, 20, 1, 2, 8);
 				if(CollectionUtils.isNotEmpty(passMsgList)) {
 					passwordMessageList = passMsgList;
 					return result = "back";

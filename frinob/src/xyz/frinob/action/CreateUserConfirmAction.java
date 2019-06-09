@@ -37,9 +37,9 @@ public class CreateUserConfirmAction extends ActionSupport implements SessionAwa
 
 		//入力チェック
 		InputChecker inputChecker = new InputChecker();
-		userIdMessageList = inputChecker.getMessages(userId, "ユーザーID", 4, 16, 1, 2, 8);
-		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 8);
-		userNameMessageList = inputChecker.getMessages(userName, "ユーザー名", 3, 20, 1, 2, 3, 4, 5, 8);
+		userIdMessageList = inputChecker.getMessageList(userId, "ユーザーID", 4, 16, 1, 2, 8);
+		passwordMessageList = inputChecker.getMessageList(password, "パスワード", 6, 20, 1, 2, 8);
+		userNameMessageList = inputChecker.getMessageList(userName, "ユーザー名", 3, 20, 1, 2, 3, 4, 5, 8);
 		emailMessageList = inputChecker.checkEmailAddress(email);
 
 		if (CollectionUtils.isNotEmpty(userIdMessageList) || CollectionUtils.isNotEmpty(passwordMessageList) || CollectionUtils.isNotEmpty(userNameMessageList) || CollectionUtils.isNotEmpty(emailMessageList)) {

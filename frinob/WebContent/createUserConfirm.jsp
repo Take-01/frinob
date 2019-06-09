@@ -42,7 +42,7 @@
 			<a href='<s:url action="CreateUserCompleteAction"/>'><button>登録完了</button></a>
 			<s:form action="CreateUserAction" method="post">
 				<s:submit value="戻る" onClick="goCreateUser()"/>
-				<s:hidden name="backFlg" id="backFlg" value=""/>
+				<s:hidden name="backFlg" id="backFlg"/>
 			</s:form>
 		</div>
 	</div>

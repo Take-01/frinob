@@ -27,7 +27,7 @@
 			</tr>
 		</table>
 
-		<form id="UpdateForm" method="post">
+		<form id="updateForm" method="post">
 			<s:hidden name="backFlg" id="backFlg"/>
 			<s:submit value="戻る" onClick="goUpdateUserNameAndEmailAction()"/>
 		</form>

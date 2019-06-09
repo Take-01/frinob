@@ -33,7 +33,7 @@ public class DeleteUserCompleteAction extends ActionSupport implements SessionAw
 
 		//パスワードの入力チェック
 		InputChecker inputChecker = new InputChecker();
-		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 6);
+		passwordMessageList = inputChecker.getMessageList(password, "パスワード", 6, 20, 1, 2, 6);
 		if(CollectionUtils.isNotEmpty(passwordMessageList)) {
 			return result = "back";
 		}

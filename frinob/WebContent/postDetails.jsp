@@ -8,7 +8,6 @@
 	<meta charset="UTF-8">
 	<title>投稿詳細</title>
 	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
-	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 
 <body>
@@ -25,16 +24,13 @@
 			</div>
 		</div>
 
-		<s:form id="postDetailsForm" method="post">
-			<s:hidden name="backFlg" id="backFlg"/>
-			<s:submit value="戻る" onClick="goHomeAction()"/>
-		</s:form>
+		<a href='<s:url action="HomeAction"/>'><button>戻る</button></a>
 
 		<%-- <s:if test="isRegistered">
 			<a href='<s:url action="RevokeFavoritePostAction"/>'><button>お気に入り解除</button></a>
 		</s:if>
 		<s:else>
-			<a href='<s:url action="RegistFavoritePostAction"/>'><button>お気に入り登録</button></a>
+			<a href='<s:url action="RegistFavoritePostConfirmAction"/>'><button>お気に入り登録</button></a>
 		</s:else> --%>
 	</div>
 

@@ -16,19 +16,19 @@
 	<div id="main">
 		<div>
 			<!-- タイトル入力チェックメッセージ -->
-			<s:if test="titleMessageList != null || titleMessageList.size() > 0">
+			<s:if test="titleMessageList != null && titleMessageList.size() > 0">
 				<s:iterator value="%{titleMessageList}"><s:property /></s:iterator>
 			</s:if>
 			<!-- 本文入力チェックメッセージ -->
-			<s:if test="bodyMessageList != null || bodyMessageList.size() > 0">
+			<s:if test="bodyMessageList != null && bodyMessageList.size() > 0">
 				<s:iterator value="%{bodyMessageList}"><s:property /></s:iterator>
 			</s:if>
 		</div>
 
 		<!-- 入力フォーム -->
 		<s:form method="post" action="EditPostConfirmAction">
-			<s:textfield label="タイトル" name="title" value="%{#session.title}"/>
-			<s:textarea label="本文" name="body" value="%{#session.body}"/>
+			<s:textfield label="タイトル" name="title" value="%{title}"/>
+			<s:textarea label="本文" name="body" value="%{body}"/>
 			<s:property value="%{#session.categoryName}"/>
 			<s:submit value="編集"/>
 		</s:form>

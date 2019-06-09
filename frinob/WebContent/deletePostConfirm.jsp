@@ -39,10 +39,10 @@
 			</tr>
 		</table>
 
-		<s:form id="deletePostForm" method="post">
-			<s:submit value="削除" action="goDeletePostCompleteAction()"/>
-			<s:hidden name="backFlg" id="backFlg" value=""/>
-			<s:submit value="戻る" action="goDeletePostConfirmAction()"/>
+		<a href='<s:url action="DeletePostCompleteAction"/>'><button>削除</button></a>
+		<s:form action="DeletePostConfirmAction" method="post">
+			<s:hidden name="backFlg" id="backFlg"/>
+			<s:submit value="戻る" onClick="goDeletePostConfirmAction()"/>
 		</s:form>
 	</div>
 

@@ -6,9 +6,9 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import xyz.frinob.dao.UserInfoDAO;
+import xyz.frinob.dao.PostInfoDAO;
 
-public class UpdateUserNameAndEmailCompleteAction extends ActionSupport implements SessionAware {
+public class EditPostCompleteAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 
@@ -20,13 +20,17 @@ public class UpdateUserNameAndEmailCompleteAction extends ActionSupport implemen
 			result = "sessionError";
 		} else {
 
-			String userId = session.get("userId").toString();
-			String userName = session.get("userName").toString();
-			String email = session.get("email").toString();
-
-			UserInfoDAO userInfoDAO = new UserInfoDAO();
-			int count = userInfoDAO.updateUserNameAndEmail(userId, userName, email);
+			//編集された投稿情報を登録
+			int postId = Integer.parseInt(session.get("postId").toString());
+			String title = session.get("newTitle").toString();
+			String body = session.get("newBody").toString();
+			PostInfoDAO postInfoDAO = new PostInfoDAO();
+			int count = postInfoDAO.updatePostInfo(postId, title, body);
 			if(count > 0) {
+				session.remove("postId");
+				session.remove("newTitle");
+				session.remove("newBody");
+				;
 				result = SUCCESS;
 			}
 		}

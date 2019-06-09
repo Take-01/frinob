@@ -20,8 +20,8 @@ public class PostDetailsAction extends ActionSupport implements SessionAware {
 
 		String result = ERROR;
 
-		if(session.containsKey("loggedIn") && session.get("loggedIn").equals(1)) {
-			// ログイン済みなら投稿をお気に入り登録しているか調べる
+		if(session.containsKey("loggedIn") && session.get("loggedIn").equals(1)) { //ログイン済み
+			//投稿をお気に入り登録しているか調べる
 			FavoritePostInfoDAO favPostDAO = new FavoritePostInfoDAO();
 			isRegistered = favPostDAO.isRegistered(session.get("userId").toString(), postId);
 		}

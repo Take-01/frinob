@@ -146,7 +146,7 @@ public class UserInfoDAO {
 
 		int result = 0;
 		DBConnector dbConnector = new DBConnector();
-		String sql = "UPDATE user_info SET user_name = ?, email = ? WHERE user_id = ?";
+		String sql = "UPDATE user_info SET user_name = ?, email = ?, update_date = ? WHERE user_id = ?";
 
 		try(Connection con = dbConnector.getConnection()) {
 
@@ -173,7 +173,7 @@ public class UserInfoDAO {
 
 		int result = 0;
 		DBConnector dbConnector = new DBConnector();
-		String sql = "UPDATE user_info SET password = ? WHERE user_id = ? AND password = ?";
+		String sql = "UPDATE user_info SET password = ?, update_date = now() WHERE user_id = ? AND password = ?";
 
 		try(Connection con = dbConnector.getConnection()) {
 

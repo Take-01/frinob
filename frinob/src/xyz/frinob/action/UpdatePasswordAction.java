@@ -14,7 +14,7 @@ public class UpdatePasswordAction extends ActionSupport implements SessionAware 
 
 		String result = ERROR;
 
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			result = "sessionError";
 		} else {
 			result = SUCCESS;

@@ -11,9 +11,54 @@ import xyz.frinob.dto.FavoritePostInfoDTO;
 import xyz.frinob.util.DBConnector;
 
 public class FavoritePostInfoDAO {
-	
-	//お気に入り登録
-	
+
+	/**
+	 * 投稿をお気に入り登録
+	 * @param userId ユーザーID
+	 * @param postId お気に入り登録する投稿ID
+	 * @param tags タグ
+	 * @return 登録件数(正常なら1)
+	 */
+	public int registFavPost(String userId, int postId, String ... tags) {
+
+		int result = 0;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "INSERT INTO favorite_post_info(user_id, post_id, ";
+
+		if(tags == null) { //タグが未入力
+			sql += "regist_date, update_date) VALUES(?, ?, now(), now())";
+		} else {
+			//入力されたタグの数にあわせSQL文を作成
+			for(int i = 1;i <= tags.length;i++) {
+				sql += "post_tag" + i + ", ";
+			}
+			sql += "regist_date, update_date) VALUES(?, ?, ";
+
+			for(int i = 1;i <= tags.length;i++) {
+				sql += "?, ";
+			}
+			sql += "now(), now())";
+		}
+
+		try(Connection con = dbConnector.getConnection()) {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setInt(2, postId);
+
+			if(tags != null) { //タグが入力されている
+				for(int i = 0;i < tags.length;i++) {
+					ps.setString(i + 3, tags[i]);
+				}
+			}
+			result = ps.executeUpdate();
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	/**
 	 * 投稿のお気に入りを解除する。
 	 * @param userId 登録者のユーザーID
@@ -21,56 +66,56 @@ public class FavoritePostInfoDAO {
 	 * @return 解除件数(正常なら1)
 	 */
 	public int revokeFavPost(String userId, int favPostId) {
-		
+
 		int result = 0;
 		DBConnector dbConnector = new DBConnector();
 		String sql = "DELETE FROM favorite_post_info WHERE user_id = ? AND post_id = ?";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ps.setInt(2, favPostId);
-			
+
 			result = ps.executeUpdate();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 全てのお気に入り登録を解除。
 	 * @param userId 登録者のユーザーID
 	 * @return 解除件数
 	 */
 	public int revokeAllFavPost(String userId) {
-		
+
 		int result = 0;
 		DBConnector dbConnector = new DBConnector();
 		String sql = "DELETE FROM favorite_post_info WHERE user_id = ?";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-			
+
 			result = ps.executeUpdate();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
+
 	/**
 	 * お気に入り登録した投稿のリストを取得する。
 	 * @param userId 登録者のユーザーID
 	 * @return 投稿のリスト
 	 */
 	public List<FavoritePostInfoDTO> getFavPostList(String userId) {
-		
+
 		List<FavoritePostInfoDTO> favPostList = new ArrayList<FavoritePostInfoDTO>();
 		DBConnector dbConnector = new DBConnector();
 		String sql = "SELECT fpi.id, fpi.user_id, fpi.post_id, "
@@ -80,14 +125,14 @@ public class FavoritePostInfoDAO {
 				+ "pi.regist_date as post_regist_date, pi.update_date as post_update_date "
 				+ "FROM favorite_post_info as fpi LEFT JOIN post_info as pi "
 				+ "ON fpi.fav_post_id = pi.id WHERE fpi.user_id = ? ORDER BY fav_update_date";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
+
 			while(rs.next()) {
 				FavoritePostInfoDTO favPostDTO = new FavoritePostInfoDTO();
 				favPostDTO.setId(rs.getInt("id"));
@@ -107,7 +152,7 @@ public class FavoritePostInfoDAO {
 				favPostDTO.setImageFileName(rs.getString("image_file_name"));
 				favPostDTO.setPostRegistDate(rs.getString("post_regist_date"));
 				favPostDTO.setPostUpdateDate(rs.getString("post_update_date"));
-				
+
 				favPostList.add(favPostDTO);
 			}
 		} catch(SQLException e) {
@@ -115,31 +160,31 @@ public class FavoritePostInfoDAO {
 		}
 		return favPostList;
 	}
-	
+
 	/**
 	 * お気に入り登録されている投稿を削除する。
 	 * @param favPostId 登録されている投稿ID
 	 * @return 削除件数(正常なら1)
 	 */
 	public int deleteFavPost(int favPostId) {
-		
+
 		int result = 0;
 		DBConnector dbConnector = new DBConnector();
 		String sql = "DELETE FROM favorite_post_info WHERE post_id = ?";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, favPostId);
-			
+
 			result = ps.executeUpdate();
-			
+
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 投稿をお気に入り登録しているか調べる。
 	 * @param userId ユーザーID
@@ -147,13 +192,13 @@ public class FavoritePostInfoDAO {
 	 * @return お気に入り登録済みならtrue
 	 */
 	public boolean isRegistered(String userId, int postId) {
-		
+
 		boolean result = false;
 		DBConnector dbConnector = new DBConnector();
 		String sql = "SELECT COUNT(*) FROM favorite_post_info WHERE user_id = ? AND post_id = ?";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ps.setInt(2, postId);

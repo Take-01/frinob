@@ -208,4 +208,31 @@ public class PostInfoDAO {
 		}
 		return postInfoList;
 	}
+
+	/**
+	 * 投稿情報を変更する
+	 * @param postId 投稿ID
+	 * @param title 変更後タイトル
+	 * @param body 変更後本文
+	 * @return 変更件数(正常なら1)
+	 */
+	public int updatePostInfo(int postId, String title, String body) {
+
+		int result = 0;
+		DBConnector dbConnector = new DBConnector();
+		String sql = "UPDATE post_info SET title = ?, body = ?, update_date = now() WHERE id = ?";
+
+		try(Connection con = dbConnector.getConnection()) {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, title);
+			ps.setString(2, body);
+			ps.setInt(3, postId);
+
+			result = ps.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

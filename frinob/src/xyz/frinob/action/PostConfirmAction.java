@@ -45,8 +45,8 @@ public class PostConfirmAction extends ActionSupport implements SessionAware {
 
 		//入力チェック
 		InputChecker inputChecker = new InputChecker();
-		titleMessageList = inputChecker.getMessages(title, "タイトル", 1, 30, 3, 4, 5, 6, 7);
-		bodyMessageList = inputChecker.getMessages(body, "本文", 1, 500, 3, 4, 5, 6, 7);
+		titleMessageList = inputChecker.getMessageList(title, "タイトル", 1, 30, 3, 4, 5, 6, 7);
+		bodyMessageList = inputChecker.getMessageList(body, "本文", 1, 500, 3, 4, 5, 6, 7);
 
 		if(CollectionUtils.isNotEmpty(titleMessageList) || CollectionUtils.isNotEmpty(bodyMessageList)) {
 			result = "back";

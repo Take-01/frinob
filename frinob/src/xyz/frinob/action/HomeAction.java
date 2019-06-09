@@ -14,30 +14,23 @@ public class HomeAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 	private List<PostInfoDTO> postList;
-	private int backFlg;
 
 	public String execute() {
 
-		if(backFlg == 1) {
-			session.remove("postId");
-			session.remove("title");
-			session.remove("body");
-			session.remove("writerId");
-			session.remove("writerName");
-			session.remove("categoryId");
-			session.remove("categoryName");
-			session.remove("registDate");
-			session.remove("updateDate");
-		}
+		session.remove("postId");
+		session.remove("title");
+		session.remove("body");
+		session.remove("writerId");
+		session.remove("writerName");
+		session.remove("categoryId");
+		session.remove("categoryName");
+		session.remove("registDate");
+		session.remove("updateDate");
 
 		PostInfoDAO postInfoDAO = new PostInfoDAO();
 		postList = postInfoDAO.getPostList();
 
 		return SUCCESS;
-	}
-
-	public void setBackFlg(int backFlg) {
-		this.backFlg = backFlg;
 	}
 
 	public List<PostInfoDTO> getPostList() {

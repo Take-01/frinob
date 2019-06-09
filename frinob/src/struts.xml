@@ -120,6 +120,22 @@
 			<result name="success">postComplete.jsp</result>
 		</action>
 
+		<!-- EditPostAction -->
+		<action name="EditPostAction" class="xyz.frinob.action.EditPostAction" method="execute">
+			<result name="success">editPost.jsp</result>
+		</action>
+
+		<!-- EditPostConfirmAction -->
+		<action name="EditPostConfirmAction" class="xyz.frinob.action.EditPostConfirmAction" method="execute">
+			<result name="success">editPostConfirm.jsp</result>
+			<result name="back">editPost.jsp</result>
+		</action>
+
+		<!-- EditPostCompleteAction -->
+		<action name="EditPostCompleteAction" class="xyz.frinob.action.EditPostCompleteAction" method="execute">
+			<result name="success">editPostComplete.jsp</result>
+		</action>
+
 		<!-- DeletePostConfirmAction -->
 		<action name="DeletePostConfirmAction" class="xyz.frinob.action.DeletePostConfirmAction" method="execute">
 			<result name="success">deletePostConfirm.jsp</result>
@@ -139,6 +155,17 @@
 		<!-- MyPostDetailsAction -->
 		<action name="MyPostDetailsAction" class="xyz.frinob.action.MyPostDetailsAction" method="execute">
 			<result name="success">myPostDetails.jsp</result>
+		</action>
+
+		<!-- RegistFavoritePostConfirmAction -->
+		<action name="RegistFavoritePostConfirmAction" class="xyz.frinob.action.RegistFavoritePostConfirmAction" method="execute">
+			<result name="success">registPostConfirm.jsp</result>
+		</action>
+
+		<!-- RegistFavoritePostCompleteAction -->
+		<action name="RegistFavoritePostCompleteAction" class="xyz.frinob.action.RegistFavoritePostCompleteAction" method="execute">
+			<result name="success">registPostComplete.jsp</result>
+			<result name="back">registPostConfirm.jsp</result>
 		</action>
 
 	</package>

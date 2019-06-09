@@ -17,16 +17,15 @@ public class UpdateUserNameAndEmailAction extends ActionSupport implements Sessi
 
 		String result = ERROR;
 
-		if(backFlg == 1) {
-			userName = session.get("userName").toString();
-			email = session.get("email").toString();
-			session.remove("userName");
-			session.remove("email");
-		}
-
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			result = "sessionError";
 		} else {
+			if(backFlg == 1) { //確認画面で戻るボタンが押された
+				userName = session.get("userName").toString();
+				email = session.get("email").toString();
+				session.remove("userName");
+				session.remove("email");
+			}
 			result = SUCCESS;
 		}
 		return result;

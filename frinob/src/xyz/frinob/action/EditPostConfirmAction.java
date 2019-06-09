@@ -22,23 +22,40 @@ public class EditPostConfirmAction extends ActionSupport implements SessionAware
 
 		String result = ERROR;
 
-		session.put("title", title);
-		session.put("body", title);
-
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			result = "sessionError";
 		} else {
+
+			session.put("newTitle", title);
+			session.put("newBody", body);
+
 			//入力チェック
 			InputChecker inputChecker = new InputChecker();
-			titleMessageList = inputChecker.getMessages(title, "タイトル", 1, 30, 3, 4, 5, 6, 7);
-			bodyMessageList = inputChecker.getMessages(body, "本文", 1, 500, 3, 4, 5, 6, 7);
+			titleMessageList = inputChecker.getMessageList(title, "タイトル", 1, 30, 3, 4, 5, 6, 7);
+			bodyMessageList = inputChecker.getMessageList(body, "本文", 1, 500, 3, 4, 5, 6, 7);
 			if(CollectionUtils.isNotEmpty(titleMessageList) || CollectionUtils.isNotEmpty(bodyMessageList)) {
-				result = "back";
+				result = "back"; //編集画面へ
 			} else {
 				result = SUCCESS;
 			}
 		}
 		return result;
+	}
+
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getBody() {
+		return this.body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
 	}
 
 	@Override

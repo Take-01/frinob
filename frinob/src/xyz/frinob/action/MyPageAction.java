@@ -14,7 +14,6 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 	private List<PostInfoDTO> postList;
-	private int backFlg;
 
 	public String execute() {
 
@@ -23,25 +22,19 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			result = "sessionError";
 		} else {
-			if(backFlg == 1) {
-				session.remove("postId");
-				session.remove("title");
-				session.remove("body");
-				session.remove("categoryId");
-				session.remove("categoryName");
-				session.remove("registDate");
-				session.remove("updateDate");
-			}
+			session.remove("postId");
+			session.remove("title");
+			session.remove("body");
+			session.remove("categoryId");
+			session.remove("categoryName");
+			session.remove("registDate");
+			session.remove("updateDate");
 
 			PostInfoDAO postInfoDAO = new PostInfoDAO();
 			postList = postInfoDAO.getUserPostList(session.get("userId").toString());
 			result = SUCCESS;
 		}
 		return result;
-	}
-
-	public void setBackFlg(int backFlg) {
-		this.backFlg = backFlg;
 	}
 
 	public List<PostInfoDTO> getPostList() {

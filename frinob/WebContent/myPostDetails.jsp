@@ -24,12 +24,9 @@
 			</div>
 		</div>
 
-		<s:form id="postDetailsForm" method="post">
-			<s:hidden name="backFlg" id="backFlg"/>
-			<s:submit value="戻る" onClick="goMyPageAction()"/>
-		</s:form>
+		<a href='<s:url action="MyPageAction"/>'><button>戻る</button></a>
 
-		<%-- <a href='<s:url action="EditPostAction"/>'><button>編集</button></a> --%>
+		<a href='<s:url action="EditPostAction"/>'><button>編集</button></a>
 		<a href='<s:url action="DeletePostConfirmAction"/>'><button>削除</button></a>
 	</div>
 

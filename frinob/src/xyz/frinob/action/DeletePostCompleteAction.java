@@ -10,17 +10,17 @@ import xyz.frinob.dao.FavoritePostInfoDAO;
 import xyz.frinob.dao.PostInfoDAO;
 
 public class DeletePostCompleteAction extends ActionSupport implements SessionAware {
-	
+
 	private Map<String, Object> session;
-	
+
 	public String execute() {
-		
+
 		String result = ERROR;
-		
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			return "sessionError";
 		}
-		
+
 		int postId = Integer.parseInt(session.get("postId").toString());
 		FavoritePostInfoDAO favPostDAO = new FavoritePostInfoDAO();
 		int count1 = favPostDAO.deleteFavPost(postId); //お気に入り投稿テーブルから削除
@@ -35,7 +35,7 @@ public class DeletePostCompleteAction extends ActionSupport implements SessionAw
 				session.remove("categoryName");
 				session.remove("registDate");
 				session.remove("updateDate");
-				
+
 				result = SUCCESS;
 			}
 		}

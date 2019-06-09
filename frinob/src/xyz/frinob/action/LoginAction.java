@@ -37,8 +37,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		//入力チェックを行う
 		InputChecker inputChecker = new InputChecker();
-		userIdMessageList = inputChecker.getMessages(userId, "ユーザーID", 4, 16, 1, 2, 8);
-		passwordMessageList = inputChecker.getMessages(password, "パスワード", 6, 20, 1, 2, 8);
+		userIdMessageList = inputChecker.getMessageList(userId, "ユーザーID", 4, 16, 1, 2, 8);
+		passwordMessageList = inputChecker.getMessageList(password, "パスワード", 6, 20, 1, 2, 8);
 
 		if(CollectionUtils.isNotEmpty(userIdMessageList) || CollectionUtils.isNotEmpty(passwordMessageList)) {
 			return result = "login";

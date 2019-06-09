@@ -22,12 +22,12 @@ public class UpdateUserNameAndEmailConfirmAction extends ActionSupport implement
 
 		String result = ERROR;
 
-		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) {
+		if(!session.containsKey("loggedIn") || !session.get("loggedIn").equals(1)) { //未ログイン
 			result = "sessionError";
 		} else {
 			//入力チェック
 			InputChecker inputChecker = new InputChecker();
-			userNameMessageList = inputChecker.getMessages(userName, "ユーザー名", 3, 20, 1, 2, 3, 4, 5, 8);
+			userNameMessageList = inputChecker.getMessageList(userName, "ユーザー名", 3, 20, 1, 2, 3, 4, 5, 8);
 			emailMessageList = inputChecker.checkEmailAddress(email);
 
 			if(CollectionUtils.isNotEmpty(userNameMessageList) || CollectionUtils.isNotEmpty(emailMessageList)) {

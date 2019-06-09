@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<title>投稿編集確認</title>
 	<link rel="stylesheet" type="text/css" href="./css/frinob.css">
+	<script type="text/javascript" src="./js/frinob.js"></script>
 </head>
 
 <body>
@@ -18,17 +19,24 @@
 		<table>
 			<tr>
 				<th>タイトル</th>
-				<td><s:property value="%{#session.title}"/></td>
+				<td><s:property value="#session.newTitle"/></td>
 			</tr>
 			<tr>
 				<th>本文</th>
-				<td><s:property value="%{#session.body}"/></td>
+				<td><s:property value="#session.newBody"/></td>
 			</tr>
-			<s:property value="%{#session.categoryName"/>
+			<s:property value="#session.categoryName"/>
 		</table>
 
 		<a href='<s:url action="EditPostCompleteAction"/>'><button>完了</button></a>
-		</div>
+		<s:form action="EditPostAction">
+			<s:hidden name="backFlg" id="backFlg"/>
+			<s:submit value="戻る" onClick="goEditPostAction()"/>
+		</s:form>
 	</div>
+
+	<footer>
+		<p>&copy; フリノブ</p>
+	</footer>
 </body>
 </html>

@@ -9,11 +9,6 @@ function goPostAction() {
 
 function goDeletePostConfirmAction() {
 	document.getElementById("backFlg").value="1";
-	document.getElementById("deletePostForm").action="DeletePostConfirmAction";
-}
-
-function goDeletePostCompleteAction() {
-	document.getElementById("deletePostForm").action="DeletePostCompleteAction";
 }
 
 function goRevokeFavoritePostAction() {
@@ -36,5 +31,9 @@ function goHomeAction() {
 
 function goUpdateUserNameAndEmailAction() {
 	document.getElementById("backFlg").value="1";
-	document.getElementById("UpdateForm").action="UpdateUserNameAndEmailAction";
+	document.getElementById("updateForm").action="UpdateUserNameAndEmailAction";
+}
+
+function goEditPostAction() {
+	document.getElementById("backFlg").value="1";
 }
