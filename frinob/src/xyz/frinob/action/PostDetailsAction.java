@@ -26,6 +26,10 @@ public class PostDetailsAction extends ActionSupport implements SessionAware {
 			isRegistered = favPostDAO.isRegistered(session.get("userId").toString(), postId);
 		}
 
+		if(session.containsKey("postId")) {
+			postId = Integer.parseInt(session.get("postId").toString());
+		}
+
 		// 投稿詳細情報を取得
 		PostInfoDAO postInfoDAO = new PostInfoDAO();
 		PostInfoDTO postInfoDTO = postInfoDAO.getPostDetails(postId);

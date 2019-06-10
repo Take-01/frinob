@@ -159,13 +159,13 @@
 
 		<!-- RegistFavoritePostConfirmAction -->
 		<action name="RegistFavoritePostConfirmAction" class="xyz.frinob.action.RegistFavoritePostConfirmAction" method="execute">
-			<result name="success">registPostConfirm.jsp</result>
+			<result name="success">registFavoritePostConfirm.jsp</result>
 		</action>
 
 		<!-- RegistFavoritePostCompleteAction -->
 		<action name="RegistFavoritePostCompleteAction" class="xyz.frinob.action.RegistFavoritePostCompleteAction" method="execute">
-			<result name="success">registPostComplete.jsp</result>
-			<result name="back">registPostConfirm.jsp</result>
+			<result name="success">registFavoritePostComplete.jsp</result>
+			<result name="back">registFavoritePostConfirm.jsp</result>
 		</action>
 
 	</package>

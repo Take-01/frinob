@@ -48,7 +48,7 @@
 			</tr>
 		</table>
 
-		<s:form action="RegistFavoritePostCompleteAction">
+		<s:form action="RegistFavoritePostCompleteAction" method="post">
 			<s:textfield name="tag1" placeholder="タグ１"/>
 			<s:textfield name="tag2" placeholder="タグ２"/>
 			<s:textfield name="tag3" placeholder="タグ３"/>
@@ -57,7 +57,7 @@
 			<s:submit value="完了"/>
 		</s:form>
 
-		<a href='<s:url action="PostDetailsAction"/>'><button>戻る</button></a>
+		<a href='<s:url action="PostDetailsAction"><s:param name="postId" value="%{#session.postId}"/></s:url>'><button>戻る</button></a>
 	</div>
 
 	<footer>

@@ -16,6 +16,7 @@
 	<div id="main">
 		<div id="left">
 			<a href='<s:url action="UpdateUserInfoAction"/>'>ユーザー情報変更</a>
+			<a href='<s:url action="FavoritePostListAction"/>'>お気に入り投稿一覧</a>
 		</div>
 		<div id="right">
 			<s:if test="postList == null || postList.isEmpty()">

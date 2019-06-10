@@ -57,7 +57,7 @@ public class InputChecker {
 	public String getRegexNotLimitLength(int ... number) {
 
 		StringBuilder regex = new StringBuilder();
-		regex.append("^[]$");
+		regex.append("^[]+$");
 		int index = regex.lastIndexOf("]");
 
 		for(int num:number) {
@@ -197,7 +197,7 @@ public class InputChecker {
 		String message = null;
 		String regex = getRegexNotLimitLength(number);
 
-		if(input != null && !input.matches(regex)) {
+		if(!input.equals("") && !input.matches(regex)) {
 			message = getCharacterType(propertyName, number);
 		}
 		return message;

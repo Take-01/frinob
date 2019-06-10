@@ -29,9 +29,9 @@
 		<%-- <s:if test="isRegistered">
 			<a href='<s:url action="RevokeFavoritePostAction"/>'><button>お気に入り解除</button></a>
 		</s:if>
-		<s:else>
+		<s:else> --%>
 			<a href='<s:url action="RegistFavoritePostConfirmAction"/>'><button>お気に入り登録</button></a>
-		</s:else> --%>
+		<%-- </s:else> --%>
 	</div>
 
 	<footer>
