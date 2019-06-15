@@ -124,7 +124,7 @@ public class FavoritePostInfoDAO {
 				+ "pi.writer_id, pi.title, pi.body, pi.image_file_path, pi.image_file_name, "
 				+ "pi.regist_date as post_regist_date, pi.update_date as post_update_date "
 				+ "FROM favorite_post_info as fpi LEFT JOIN post_info as pi "
-				+ "ON fpi.fav_post_id = pi.id WHERE fpi.user_id = ? ORDER BY fav_update_date";
+				+ "ON fpi.post_id = pi.id WHERE fpi.user_id = ? ORDER BY fav_update_date";
 
 		try(Connection con = dbConnector.getConnection()) {
 

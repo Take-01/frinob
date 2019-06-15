@@ -19,8 +19,8 @@
 		</s:if>
 		<s:else>
 			<s:iterator value="postList">
-			<div class="postBlock">
-				<a class="postLink" href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
+			<div class="linkBlock">
+				<a class="link" href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
 				<h3><s:property value="title"/></h3>
 				<p><s:property value="body"/></p>
 				<p><s:property value="writerName"/></p>

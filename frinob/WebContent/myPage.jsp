@@ -17,6 +17,7 @@
 		<div id="left">
 			<a href='<s:url action="UpdateUserInfoAction"/>'>ユーザー情報変更</a>
 			<a href='<s:url action="FavoritePostListAction"/>'>お気に入り投稿一覧</a>
+			<a href='<s:url action="FavoriteUserListAction"/>'>お気に入りユーザー一覧</a>
 		</div>
 		<div id="right">
 			<s:if test="postList == null || postList.isEmpty()">
@@ -24,8 +25,8 @@
 			</s:if>
 			<s:else>
 				<s:iterator value="postList">
-					<div class="postBlock">
-						<a class="postLink"
+					<div class="linkBlock">
+						<a class="link"
 							href='<s:url value="MyPostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
 						<h3>
 							<s:property value="title" />

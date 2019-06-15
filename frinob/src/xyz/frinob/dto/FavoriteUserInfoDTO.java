@@ -4,7 +4,7 @@ public class FavoriteUserInfoDTO {
 
 	private int id;
 	private String userId;
-	private String favUserid;
+	private String favUserId;
 	private String userTag1;
 	private String userTag2;
 	private String userTag3;
@@ -30,12 +30,12 @@ public class FavoriteUserInfoDTO {
 		this.userId = userId;
 	}
 
-	public String getFavUserid() {
-		return this.favUserid;
+	public String getFavUserId() {
+		return this.favUserId;
 	}
 
-	public void setFavUserid(String favUserid) {
-		this.favUserid = favUserid;
+	public void setFavUserId(String favUserId) {
+		this.favUserId = favUserId;
 	}
 
 	public String getUserTag1() {
@@ -93,7 +93,7 @@ public class FavoriteUserInfoDTO {
 	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
-	
+
 	public String getFavUserName() {
 		return this.favUserName;
 	}

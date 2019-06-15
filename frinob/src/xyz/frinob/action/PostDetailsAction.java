@@ -15,6 +15,7 @@ public class PostDetailsAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	private int postId;
 	private boolean isRegistered;
+	private int userFlg;
 
 	public String execute() {
 
@@ -55,6 +56,14 @@ public class PostDetailsAction extends ActionSupport implements SessionAware {
 
 	public boolean getIsRegistered() {
 		return this.isRegistered;
+	}
+
+	public int getUserFlg() {
+		return this.userFlg;
+	}
+
+	public void setUserFlg(int userFlg) {
+		this.userFlg = userFlg;
 	}
 
 	@Override

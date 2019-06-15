@@ -157,6 +157,11 @@
 			<result name="success">myPostDetails.jsp</result>
 		</action>
 
+		<!-- UserPostListAction -->
+		<action name="UserPostListAction" class="xyz.frinob.action.UserPostListAction" method="execute">
+			<result name="success">userPostList.jsp</result>
+		</action>
+
 		<!-- RegistFavoritePostConfirmAction -->
 		<action name="RegistFavoritePostConfirmAction" class="xyz.frinob.action.RegistFavoritePostConfirmAction" method="execute">
 			<result name="success">registFavoritePostConfirm.jsp</result>
@@ -168,5 +173,45 @@
 			<result name="back">registFavoritePostConfirm.jsp</result>
 		</action>
 
+		<!-- RevokeFavoritePostConfirmAction  -->
+		<action name="RevokeFavoritePostConfirmAction" class="xyz.frinob.action.RevokeFavoritePostConfirmAction" method="execute">
+			<result name="success">revokeFavoritePostConfirm.jsp</result>
+		</action>
+
+		<!-- RevokeFavoritePostCompleteAction -->
+		<action name="RevokeFavoritePostCompleteAction" class="xyz.frinob.action.RevokeFavoritePostCompleteAction" method="execute">
+			<result name="success">revokeFavoritePostComplete.jsp</result>
+		</action>
+
+		<!-- RegistFavoriteUserConfirmAction -->
+		<action name="RegistFavoriteUserConfirmAction" class="xyz.frinob.action.RegistFavoriteUserConfirmAction" method="execute">
+			<result name="success">registFavoriteUserConfirm.jsp</result>
+		</action>
+
+		<!-- RegistFavoriteUserCompleteAction -->
+		<action name="RegistFavoriteUserCompleteAction" class="xyz.frinob.action.RegistFavoriteUserCompleteAction" method="execute">
+			<result name="success">registFavoriteUserComplete.jsp</result>
+			<result name="back">registFavoriteUserConfirm.jsp</result>
+		</action>
+
+		<!-- RevokeFavoriteUserConfirmAction -->
+		<action name="RevokeFavoriteUserConfirmAction" class="xyz.frinob.action.RevokeFavoriteUserConfirmAction" method="execute">
+			<result name="success">revokeFavoriteUserConfirm.jsp</result>
+		</action>
+
+		<!-- RevokeFavoriteUserCompleteAction -->
+		<action name="RevokeFavoriteUserCompleteAction" class="xyz.frinob.action.RevokeFavoriteUserCompleteAction" method="execute">
+			<result name="success">revokeFavoriteUserComplete.jsp</result>
+		</action>
+
+		<!-- FavoritePostListAction -->
+		<action name="FavoritePostListAction" class="xyz.frinob.action.FavoritePostListAction" method="execute">
+			<result name="success">favoritePostList.jsp</result>
+		</action>
+
+		<!-- FavoriteUserListAction -->
+		<action name="FavoriteUserListAction" class="xyz.frinob.action.FavoriteUserListAction" method="execute">
+			<result name="success">favoriteUserList.jsp</result>
+		</action>
 	</package>
 </struts>
