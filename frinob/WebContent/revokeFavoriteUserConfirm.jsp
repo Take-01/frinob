@@ -19,7 +19,7 @@
 		<h3>ユーザー名：<s:property value="#session.writerName"/></h3>
 
 		<a href='<s:url action="RevokeFavoriteUserCompleteAction"/>'><button>完了</button></a>
-		<a href='<s:url action="UserPostListAction"/>'><button>戻る</button></a>
+		<a href='<s:url action="UserPostListAction"><s:param name="writerId" value="%{#session.writerId}"/></s:url>'><button>戻る</button></a>
 	</div>
 
 	<footer>

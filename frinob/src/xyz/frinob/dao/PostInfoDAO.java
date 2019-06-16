@@ -106,7 +106,11 @@ public class PostInfoDAO {
 
 		List<PostInfoDTO> postList = new ArrayList<PostInfoDTO>();
 		DBConnector dbConnector = new DBConnector();
-		String sql = "SELECT * FROM post_info WHERE writer_id = ? ORDER BY regist_date";
+		String sql = "SELECT pi.id, pi.writer_id, pi.title, pi.body, pi.category, "
+				+ "pi.image_file_path, pi.image_file_name, pi.regist_date, pi.update_date, "
+				+ "ca.category_name, ui.user_name FROM post_info as pi LEFT JOIN category as ca "
+				+ "ON pi.category = ca.category_id LEFT JOIN user_info as ui "
+				+ "ON pi.writer_id = ui.user_id WHERE pi.writer_id = ? ORDER BY pi.regist_date";
 
 		try(Connection con = dbConnector.getConnection()) {
 
@@ -119,9 +123,11 @@ public class PostInfoDAO {
 				PostInfoDTO postInfoDTO = new PostInfoDTO();
 				postInfoDTO.setId(rs.getInt("id"));
 				postInfoDTO.setWriterId(rs.getString("writer_id"));
+				postInfoDTO.setWriterName(rs.getString("user_name"));
 				postInfoDTO.setTitle(rs.getString("title"));
 				postInfoDTO.setBody(rs.getString("body"));
 				postInfoDTO.setCategoryId(rs.getInt("category"));
+				postInfoDTO.setCategoryName(rs.getString("category_name"));
 				postInfoDTO.setImageFilePath(rs.getString("image_file_path"));
 				postInfoDTO.setImageFileName(rs.getString("image_file_name"));
 				postInfoDTO.setRegistDate(rs.getString("regist_date"));

@@ -120,7 +120,7 @@ public class FavoriteUserInfoDAO {
 				+ "fui.user_tag1, fui.user_tag2, fui.user_tag3, fui.user_tag4, fui.user_tag5, "
 				+ "fui.regist_date, fui.update_date, ui.user_name "
 				+ "FROM favorite_user_info as fui LEFT JOIN user_info as ui "
-				+ "ON fui.fav_user_id = ui.user_id WHERE user_id = ? ORDER BY update_date";
+				+ "ON fui.fav_user_id = ui.user_id WHERE fui.user_id = ? ORDER BY update_date";
 
 		try(Connection con = dbConnector.getConnection()) {
 
@@ -194,9 +194,11 @@ public class FavoriteUserInfoDAO {
 			ps.setString(2, writerId);
 
 			ResultSet rs = ps.executeQuery();
-			int count = rs.getInt("count(*)");
-			if(count > 0) {
-				result = true;
+			if(rs.next()) {
+				int count = rs.getInt("count(*)");
+				if(count > 0) {
+					result = true;
+				}
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();

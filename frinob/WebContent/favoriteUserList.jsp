@@ -22,7 +22,8 @@
 			<h1>お気に入りユーザー一覧</h1>
 			<s:iterator value="favUserList">
 				<div class="linkBlock">
-					<a class="link" href='<s:url action="UserPostList"><s:param name="writerId" value="%{favUserId}"/></s:url>'><s:property value="favUserId"/></a>
+					<a class="link" href='<s:url action="UserPostListAction"><s:param name="writerId" value="%{favUserId}"/></s:url>'></a>
+					<h3><s:property value="favUserId"/></h3>
 					<h3><s:property value="favUserName"/></h3>
 				</div>
 			</s:iterator>

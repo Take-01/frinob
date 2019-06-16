@@ -16,7 +16,7 @@
 	<div id="main">
 		<div>
 			<h1><s:property value="#session.title"/></h1>
-			<h3><a href='<s:url action="UserPostListAction"/>'><s:property value="#session.writerName"/></a></h3>
+			<h3><a href='<s:url action="UserPostListAction"><s:param name="postDetailsFlg" value="1"/></s:url>'><s:property value="#session.writerName"/></a></h3>
 			<p><s:property value="#session.categoryName"/></p>
 			<p>投稿日：<s:property value="#session.registDate"/>　更新日：<s:property value="#session.updateDate"/></p>
 			<div>
@@ -25,7 +25,7 @@
 		</div>
 
 		<s:if test="userFlg == 1"><!-- ユーザーの投稿一覧画面からの遷移だった場合 -->
-			<a href='<s:url action="UserPostListAction"/>'><button>戻る</button></a>
+			<a href='<s:url action="UserPostListAction"><s:param name="postDetailsFlg" value="1"/></s:url>'><button>戻る</button></a>
 		</s:if>
 		<s:else>
 			<a href='<s:url action="HomeAction"/>'><button>戻る</button></a>
