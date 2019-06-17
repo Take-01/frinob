@@ -16,20 +16,20 @@ public class SaftyPassword {
 		byte[] hashedPassword = DigestUtils.sha256(password);
 
 		MessageDigest messageDigest = null;
+		String hash = null;
+
 		try {
 			messageDigest = MessageDigest.getInstance(ALGORITHM);
+			messageDigest.update(hashedSalt);
+			byte[] digest = messageDigest.digest(hashedPassword);
+			for(int i = 0;i < STRETCH_COUNT;i++) {
+				digest = messageDigest.digest(digest);
+			}
+			hash = DigestUtils.sha256Hex(digest);
+
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-
-		messageDigest.update(hashedSalt);
-		byte[] digest = messageDigest.digest(hashedPassword);
-		for(int i = 0;i < STRETCH_COUNT;i++) {
-			digest = messageDigest.digest(digest);
-		}
-
-		String hash = DigestUtils.sha256Hex(digest);
-
 		return hash;
 	}
 

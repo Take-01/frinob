@@ -46,8 +46,10 @@ public class FavoriteUserInfoDAO {
 			ps.setString(1, userId);
 			ps.setString(2, writerId);
 
-			for(int i = 0;i < tags.length;i++) { //タグが入力されている
-				ps.setString(i + 3, tags[i]);
+			if(tags != null) { //タグが入力されている
+				for(int i = 0;i < tags.length;i++) {
+					ps.setString(i + 3, tags[i]);
+				}
 			}
 
 			result = ps.executeUpdate();

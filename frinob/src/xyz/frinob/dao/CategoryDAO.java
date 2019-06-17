@@ -12,18 +12,21 @@ import xyz.frinob.util.DBConnector;
 
 public class CategoryDAO {
 
-	//カテゴリーの情報を全て取得
+	/**
+	 * カテゴリーの情報を全て取得
+	 * @return CategoryDTO型のリスト
+	 */
 	public List<CategoryDTO> getCategoryList() {
-		
+
 		List<CategoryDTO> categoryList = new ArrayList<CategoryDTO>();
 		DBConnector dbConnector = new DBConnector();
 		String sql = "SELECT * FROM category";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			
+
 			while(rs.next()) {
 				CategoryDTO categoryDTO = new CategoryDTO();
 				categoryDTO.setCategoryId(rs.getInt("category_id"));
@@ -31,7 +34,7 @@ public class CategoryDAO {
 				categoryDTO.setCategoryDescription(rs.getString("category_description"));
 				categoryDTO.setRegistDate(rs.getString("regist_date"));
 				categoryDTO.setUpdateDate(rs.getString("update_date"));
-				
+
 				categoryList.add(categoryDTO);
 			}
 		} catch(SQLException e) {
@@ -39,21 +42,25 @@ public class CategoryDAO {
 		}
 		return categoryList;
 	}
-	
-	//カテゴリーの情報を取得
+
+	/**
+	 * カテゴリーの情報を取得
+	 * @param categoryId カテゴリーID
+	 * @return カテゴリー情報
+	 */
 	public CategoryDTO getCategory(int categoryId) {
-		
+
 		CategoryDTO categoryDTO = new CategoryDTO();
 		DBConnector dbConnector = new DBConnector();
 		String sql = "SELECT * FROM category WHERE category_id = ?";
-		
+
 		try(Connection con = dbConnector.getConnection()) {
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, categoryId);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
+
 			if(rs.next()) {
 				categoryDTO.setCategoryId(rs.getInt("category_id"));
 				categoryDTO.setCategoryName(rs.getString("category_name"));
@@ -66,5 +73,5 @@ public class CategoryDAO {
 		}
 		return categoryDTO;
 	}
-	
+
 }

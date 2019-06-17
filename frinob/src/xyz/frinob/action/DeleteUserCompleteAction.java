@@ -91,6 +91,10 @@ public class DeleteUserCompleteAction extends ActionSupport implements SessionAw
 		return result;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

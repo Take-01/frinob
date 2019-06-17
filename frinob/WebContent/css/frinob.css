@@ -83,3 +83,19 @@ table {
 	width: 100%;
 	height: 100%;
 }
+
+.box-parent {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+}
+
+#left {
+	width: 30%;
+	padding: 0 10px;
+}
+
+#right {
+	width: 70%;
+	padding: 0 10px;
+}

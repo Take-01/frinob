@@ -25,7 +25,6 @@ public class UpdateUserInfoAction extends ActionSupport implements SessionAware 
 			result = "sessionError";
 		} else {
 			UserInfoDAO userInfoDAO = new UserInfoDAO();
-			UserInfoDTO userInfoDTO = new UserInfoDTO();
 			userInfoDTO = userInfoDAO.getUserInfo(session.get("userId").toString());
 
 			if(userInfoDTO.getId() != 0) {

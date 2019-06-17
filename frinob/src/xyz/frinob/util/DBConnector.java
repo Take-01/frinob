@@ -9,7 +9,7 @@ public class DBConnector {
 	private static String driverName = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost/frinob";
 	private static String user = "root";
-	private static String password = "aaaaaaa";
+	private static String password = "aaaa";
 
 	public Connection getConnection() {
 
