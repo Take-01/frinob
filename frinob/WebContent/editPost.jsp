@@ -26,11 +26,11 @@
 		</div>
 
 		<!-- 入力フォーム -->
-		<s:form method="post" action="EditPostConfirmAction">
+		<s:form method="post" action="EditPostConfirmAction" class="block">
 			<s:textfield label="タイトル" name="title" value="%{title}"/>
 			<s:textarea label="本文" name="body" value="%{body}"/>
 			<s:property value="%{#session.categoryName}"/>
-			<s:submit value="編集"/>
+			<s:submit class="btn" value="編集"/>
 		</s:form>
 	</div>
 </body>

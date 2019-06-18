@@ -18,16 +18,16 @@
 		<h3>ユーザーID：<s:property value="#session.writerId"/></h3>
 		<h3>ユーザー名：<s:property value="#session.writerName"/></h3>
 
-		<s:form action="RegistFavoriteUserCompleteAction" method="post">
+		<s:form action="RegistFavoriteUserCompleteAction" method="post" class="block">
 			<s:textfield name="tag1" placeholder="タグ１"/>
 			<s:textfield name="tag2" placeholder="タグ２"/>
 			<s:textfield name="tag3" placeholder="タグ３"/>
 			<s:textfield name="tag4" placeholder="タグ４"/>
 			<s:textfield name="tag5" placeholder="タグ５"/>
-			<s:submit value="完了"/>
+			<s:submit class="btn" value="完了"/>
 		</s:form>
 
-		<a href='<s:url action="UserPostListAction"/>'><button>戻る</button></a>
+		<a href='<s:url action="UserPostListAction"/>'><button class="btn">戻る</button></a>
 	</div>
 
 	<footer>

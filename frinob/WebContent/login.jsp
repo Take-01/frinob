@@ -42,10 +42,10 @@
 		</div>
 
 		<!-- 入力フォーム -->
-		<s:form action="LoginAction" method="post">
+		<s:form action="LoginAction" method="post" class="block">
 			<s:textfield label="ユーザーID" name="userId" value="%{userId}"/>
 			<s:password label="パスワード" name="password"/>
-			<s:submit value="ログイン"/>
+			<s:submit class="btn" value="ログイン"/>
 		</s:form>
 	</div>
 

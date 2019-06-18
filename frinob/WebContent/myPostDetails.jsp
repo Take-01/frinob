@@ -15,7 +15,7 @@
 	<jsp:include page="header.jsp"/>
 
 	<div id="main">
-		<div>
+		<div class="block">
 			<h1><s:property value="#session.title"/></h1>
 			<p><s:property value="#session.categoryName"/></p>
 			<p>投稿日：<s:property value="#session.registDate"/>　更新日：<s:property value="#session.updateDate"/></p>
@@ -24,10 +24,10 @@
 			</div>
 		</div>
 
-		<a href='<s:url action="MyPageAction"/>'><button>戻る</button></a>
+		<a href='<s:url action="MyPageAction"/>'><button class="btn">戻る</button></a>
 
-		<a href='<s:url action="EditPostAction"/>'><button>編集</button></a>
-		<a href='<s:url action="DeletePostConfirmAction"/>'><button>削除</button></a>
+		<a href='<s:url action="EditPostAction"/>'><button class="btn">編集</button></a>
+		<a href='<s:url action="DeletePostConfirmAction"/>'><button class="btn">削除</button></a>
 	</div>
 
 	<footer>

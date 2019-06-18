@@ -32,12 +32,12 @@
 			<s:iterator value="emailMessageList"><s:property /><br></s:iterator>
 		</s:if>
 		<!-- 登録フォーム -->
-		<s:form action="CreateUserConfirmAction" method="post">
+		<s:form action="CreateUserConfirmAction" method="post" class="block">
 			<s:textfield name="userId" label="ユーザーID" value='%{#session.userId}'/>
 			<s:password name="password" label="パスワード"/>
 			<s:textfield name="userName" label="ユーザー名" value='%{#session.userName}'/>
 			<s:textfield name="email" label="メールアドレス" value='%{#session.email}'/>
-			<s:submit value="新規登録"/>
+			<s:submit class="btn" value="新規登録"/>
 		</s:form>
 	</div>
 

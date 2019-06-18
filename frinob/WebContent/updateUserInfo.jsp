@@ -15,7 +15,7 @@
 
 	<div id="main">
 		<h1>登録情報</h1>
-		<table>
+		<table class="block">
 			<tr>
 				<th>ユーザーID</th>
 				<td><s:property value="userId"/></td>
@@ -30,10 +30,10 @@
 			</tr>
 		</table>
 
-		<s:form action="UpdateUserNameAndEmailAction" method="post">
+		<s:form action="UpdateUserNameAndEmailAction" method="post" class="block">
 			<s:hidden name="userName" value="%{userName}"/>
 			<s:hidden name="email" value="%{email}"/>
-			<s:submit value="変更"/>
+			<s:submit class="btn" value="変更"/>
 		</s:form>
 		<p>パスワードの変更は<a href='<s:url action="UpdatePasswordAction"/>'>こちら</a>からどうぞ</p>
 	</div>

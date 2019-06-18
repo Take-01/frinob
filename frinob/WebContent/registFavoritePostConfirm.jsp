@@ -21,7 +21,7 @@
 			</s:if>
 		</div>
 
-		<table>
+		<table class="block">
 			<tr>
 				<th>タイトル</th>
 				<td><s:property value="#session.title"/></td>
@@ -48,16 +48,16 @@
 			</tr>
 		</table>
 
-		<s:form action="RegistFavoritePostCompleteAction" method="post">
+		<s:form action="RegistFavoritePostCompleteAction" method="post" class="block">
 			<s:textfield name="tag1" placeholder="タグ１"/>
 			<s:textfield name="tag2" placeholder="タグ２"/>
 			<s:textfield name="tag3" placeholder="タグ３"/>
 			<s:textfield name="tag4" placeholder="タグ４"/>
 			<s:textfield name="tag5" placeholder="タグ５"/>
-			<s:submit value="完了"/>
+			<s:submit class="btn" value="完了"/>
 		</s:form>
 
-		<a href='<s:url action="PostDetailsAction"><s:param name="postId" value="%{#session.postId}"/></s:url>'><button>戻る</button></a>
+		<a href='<s:url action="PostDetailsAction"><s:param name="postId" value="%{#session.postId}"/></s:url>'><button class="btn">戻る</button></a>
 	</div>
 
 	<footer>

@@ -17,7 +17,7 @@
 
 	<div id="main">
 		<h3>以下の内容で登録します。</h3>
-		<table>
+		<table class="block">
 			<s:form method="post">
 				<tr>
 					<th>ユーザーID</th>
@@ -39,9 +39,9 @@
 		</table>
 
 		<div>
-			<a href='<s:url action="CreateUserCompleteAction"/>'><button>登録完了</button></a>
-			<s:form action="CreateUserAction" method="post">
-				<s:submit value="戻る" onClick="goCreateUser()"/>
+			<a href='<s:url action="CreateUserCompleteAction"/>'><button class="btn">登録完了</button></a>
+			<s:form action="CreateUserAction" method="post" class="block">
+				<s:submit class="btn" value="戻る" onClick="goCreateUser()"/>
 				<s:hidden name="backFlg" id="backFlg"/>
 			</s:form>
 		</div>

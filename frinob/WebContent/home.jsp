@@ -19,7 +19,7 @@
 		</s:if>
 		<s:else>
 			<s:iterator value="postList">
-			<div class="linkBlock">
+			<div class="linkBlock block">
 				<a class="link" href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
 				<h3><s:property value="title"/></h3>
 				<p><s:property value="body"/></p>

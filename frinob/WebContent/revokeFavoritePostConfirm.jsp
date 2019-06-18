@@ -15,7 +15,7 @@
 
 	<div id="main">
 		<h1>以下の投稿のお気に入り登録を解除します。</h1>
-		<table>
+		<table class="block">
 			<tr>
 				<th>タイトル</th>
 				<td><s:property value="#session.title"/></td>
@@ -38,8 +38,8 @@
 			</tr>
 		</table>
 
-		<a href='<s:url action="RevokeFavoritePostCompleteAction"/>'><button>完了</button></a>
-		<a href='<s:url action="PostDetailsAction"><s:param name="postId" value="%{#session.postId}"/></s:url>'><button>戻る</button></a>
+		<a href='<s:url action="RevokeFavoritePostCompleteAction"/>'><button class="btn">完了</button></a>
+		<a href='<s:url action="PostDetailsAction"><s:param name="postId" value="%{#session.postId}"/></s:url>'><button class="btn">戻る</button></a>
 	</div>
 
 	<footer>

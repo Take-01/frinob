@@ -15,7 +15,7 @@
 
 	<div id="main">
 		<div class="box-parent">
-			<div id="left">
+			<div id="left" class="block">
 				<p><a href='<s:url action="UpdateUserInfoAction"/>'>ユーザー情報変更</a></p>
 				<p><a href='<s:url action="FavoritePostListAction"/>'>お気に入り投稿一覧</a></p>
 				<p><a href='<s:url action="FavoriteUserListAction"/>'>お気に入りユーザー一覧</a></p>
@@ -26,7 +26,7 @@
 				</s:if>
 				<s:else>
 					<s:iterator value="postList">
-						<div class="linkBlock">
+						<div class="linkBlock block">
 							<a class="link"
 								href='<s:url value="MyPostDetailsAction"><s:param name="postId" value="%{id}"/></s:url>'></a>
 							<h3>

@@ -16,7 +16,7 @@
 
 	<div id="main">
 		<h1>この投稿を削除します。</h1>
-		<table>
+		<table class="block">
 			<tr>
 				<th>タイトル</th>
 				<td><s:property value="#session.title"/></td>
@@ -39,10 +39,10 @@
 			</tr>
 		</table>
 
-		<a href='<s:url action="DeletePostCompleteAction"/>'><button>削除</button></a>
-		<s:form action="DeletePostConfirmAction" method="post">
+		<a href='<s:url action="DeletePostCompleteAction"/>'><button class="btn">削除</button></a>
+		<s:form action="DeletePostConfirmAction" method="post" class="block">
 			<s:hidden name="backFlg" id="backFlg"/>
-			<s:submit value="戻る" onClick="goDeletePostConfirmAction()"/>
+			<s:submit class="btn" value="戻る" onClick="goDeletePostConfirmAction()"/>
 		</s:form>
 	</div>
 

@@ -16,7 +16,7 @@
 
 	<div id="main">
 		<h1>以下の内容で投稿します。</h1>
-		<table>
+		<table class="block">
 			<tr>
 				<th>タイトル</th>
 				<td><s:property value="#session.title"/></td>
@@ -31,10 +31,10 @@
 			</tr>
 		</table>
 
-		<a href='<s:url action="PostCompleteAction"/>'><button>完了</button></a>
-		<s:form id="postForm" method="post">
+		<a href='<s:url action="PostCompleteAction"/>'><button class="btn">完了</button></a>
+		<s:form id="postForm" method="post" class="block">
 			<s:hidden name="backFlg" id="backFlg"/>
-			<s:submit value="戻る" onClick="goPostAction()"/>
+			<s:submit class="btn" value="戻る" onClick="goPostAction()"/>
 		</s:form>
 	</div>
 

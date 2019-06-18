@@ -26,14 +26,14 @@
 			<s:property value="notMatchMessage"/>
 		</s:if>
 
-		<s:form method="post" action="UpdatePasswordCompleteAction">
+		<s:form method="post" action="UpdatePasswordCompleteAction" class="block">
 			<s:password name="oldPassword" label="現在のパスワード"/>
 			<s:password name="newPassword" label="新しいパスワード"/>
 			<s:password name="newPasswordConfirm" label="新しいパスワード(確認用)"/>
-			<s:submit value="再設定完了"/>
+			<s:submit class="btn" value="再設定完了"/>
 		</s:form>
 
-		<a href='<s:url action="UpdateUserInfoAction"/>'><button>戻る</button></a>
+		<a href='<s:url action="UpdateUserInfoAction"/>'><button class="btn">戻る</button></a>
 	</div>
 
 	<footer>

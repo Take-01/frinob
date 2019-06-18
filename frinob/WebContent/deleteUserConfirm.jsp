@@ -16,7 +16,7 @@
 	<div id="main">
 		<h1>以下のユーザーを削除しますか？</h1>
 		<h3>ユーザーに紐付く全ての情報は削除され、復元はできません。</h3>
-		<table>
+		<table class="block">
 			<tr>
 				<th>ユーザーID</th>
 				<td><s:property value="#session.userId"/></td>
@@ -32,12 +32,12 @@
 		</table>
 
 		<h5>削除する場合、パスワードを入力してください。</h5>
-		<s:form method="post" action="DeleteUserCompleteAction">
+		<s:form method="post" action="DeleteUserCompleteAction" class="block">
 			<s:password name="password" label="パスワード"/>
-			<s:submit value="削除"/>
+			<s:submit class="btn" value="削除"/>
 		</s:form>
-		<%-- <a href='<s:url action="UpdateUserAction"/>'><button>変更</button></a> --%>
-		<a href='<s:url action="MyPageAction"/>'><button>戻る</button></a>
+		<a href='<s:url action="UpdateUserAction"/>'><button class="btn">変更</button></a>
+		<a href='<s:url action="MyPageAction"/>'><button class="btn">戻る</button></a>
 	</div>
 
 	<footer>

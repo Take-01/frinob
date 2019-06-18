@@ -16,7 +16,7 @@
 
 	<div id="main">
 		<h1>以下の内容で変更します。</h1>
-		<table>
+		<table class="block">
 			<tr>
 				<th>ユーザー名</th>
 				<td><s:property value="#session.userName"/></td>
@@ -27,12 +27,12 @@
 			</tr>
 		</table>
 
-		<form id="updateForm" method="post">
+		<form id="updateForm" method="post" class="block">
 			<s:hidden name="backFlg" id="backFlg"/>
-			<s:submit value="戻る" onClick="goUpdateUserNameAndEmailAction()"/>
+			<s:submit class="btn" value="戻る" onClick="goUpdateUserNameAndEmailAction()"/>
 		</form>
 
-		<a href='<s:url action="UpdateUserNameAndEmailCompleteAction"/>'><button>完了</button></a>
+		<a href='<s:url action="UpdateUserNameAndEmailCompleteAction"/>'><button class="btn">完了</button></a>
 	</div>
 </body>
 </html>

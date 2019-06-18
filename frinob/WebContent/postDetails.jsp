@@ -14,7 +14,7 @@
 	<jsp:include page="header.jsp"/>
 
 	<div id="main">
-		<div>
+		<div class="block">
 			<h1><s:property value="#session.title"/></h1>
 			<h3><a href='<s:url action="UserPostListAction"><s:param name="postDetailsFlg" value="1"/></s:url>'><s:property value="#session.writerName"/></a></h3>
 			<p><s:property value="#session.categoryName"/></p>
@@ -25,17 +25,17 @@
 		</div>
 
 		<s:if test="userFlg == 1"><!-- ユーザーの投稿一覧画面からの遷移だった場合 -->
-			<a href='<s:url action="UserPostListAction"><s:param name="postDetailsFlg" value="1"/></s:url>'><button>戻る</button></a>
+			<a href='<s:url action="UserPostListAction"><s:param name="postDetailsFlg" value="1"/></s:url>'><button class="btn">戻る</button></a>
 		</s:if>
 		<s:else>
-			<a href='<s:url action="HomeAction"/>'><button>戻る</button></a>
+			<a href='<s:url action="HomeAction"/>'><button class="btn">戻る</button></a>
 		</s:else>
 
 		<s:if test="isRegistered">
-			<a href='<s:url action="RevokeFavoritePostConfirmAction"/>'><button>お気に入り解除</button></a>
+			<a href='<s:url action="RevokeFavoritePostConfirmAction"/>'><button class="btn">お気に入り解除</button></a>
 		</s:if>
 		<s:else>
-			<a href='<s:url action="RegistFavoritePostConfirmAction"/>'><button>お気に入り登録</button></a>
+			<a href='<s:url action="RegistFavoritePostConfirmAction"/>'><button class="btn">お気に入り登録</button></a>
 		</s:else>
 	</div>
 

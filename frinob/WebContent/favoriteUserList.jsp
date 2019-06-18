@@ -21,7 +21,7 @@
 		<s:else>
 			<h1>お気に入りユーザー一覧</h1>
 			<s:iterator value="favUserList">
-				<div class="linkBlock">
+				<div class="linkBlock block">
 					<a class="link" href='<s:url action="UserPostListAction"><s:param name="writerId" value="%{favUserId}"/></s:url>'></a>
 					<h3><s:property value="favUserId"/></h3>
 					<h3><s:property value="favUserName"/></h3>

@@ -4,8 +4,6 @@ html {
 	height: 100%;
 }
 
-/* #005b63 : #e08886 */
-
 body {
 	height: 100%;
 	margin: 0;
@@ -58,17 +56,30 @@ header button {
 	border-radius: 20px;
 }
 
+.btn {
+	margin: 0 3%;
+	color: #666;
+	background: #fff;
+	border-radius: 10px;
+	border-style: none;
+	border: 1px solid #a0ece1;
+	padding: 2px 10px;
+}
+
 footer {
 	width: 100%;
-	background: #efefef;
+	background: #f3f3f3;
 	color: #666;
 	font-size: 12px;
 	text-align: center;
 	align-self: flex-end;
 }
 
-table {
-	margin: 20px auto;
+.block {
+	border: 2px solid #f3f3f3;
+	margin: 1%;
+	border-radius: 10px;
+	padding: 10px;
 }
 
 .linkBlock {
@@ -92,10 +103,11 @@ table {
 
 #left {
 	width: 30%;
-	padding: 0 10px;
+	padding: 10px;
 }
 
 #right {
 	width: 70%;
-	padding: 0 10px;
+	padding: 10px;
 }
+

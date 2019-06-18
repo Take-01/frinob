@@ -26,10 +26,10 @@
 		</div>
 
 		<!-- 入力欄 -->
-		<s:form action="UpdateUserNameAndEmailConfirmAction" method="post">
+		<s:form action="UpdateUserNameAndEmailConfirmAction" method="post" class="block">
 			<s:textfield name="userName" value="%{userName}"/>
 			<s:textfield name="email" value="%{email}"/>
-			<s:submit value="変更"/>
+			<s:submit class="btn" value="変更"/>
 		</s:form>
 	</div>
 </body>
