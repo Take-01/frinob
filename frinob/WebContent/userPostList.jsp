@@ -33,7 +33,7 @@
 						<div class="linkBlock block">
 							<a class="link" href='<s:url value="PostDetailsAction"><s:param name="postId" value="%{id}"/><s:param name="userFlg" value="1"/></s:url>'></a>
 							<h3><s:property value="title"/></h3>
-							<p><s:property value="body"/></p>
+							<p class="text"><s:property value="body"/></p>
 						</div>
 					</s:iterator>
 				</div>

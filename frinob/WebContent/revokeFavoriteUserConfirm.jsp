@@ -15,8 +15,10 @@
 
 	<div id="main">
 		<h1>このユーザーのお気に入り登録を解除します</h1>
-		<h3>ユーザーID：<s:property value="#session.writerId"/></h3>
-		<h3>ユーザー名：<s:property value="#session.writerName"/></h3>
+		<div class="block">
+			<h3>ユーザーID：<s:property value="#session.writerId"/></h3>
+			<h3>ユーザー名：<s:property value="#session.writerName"/></h3>
+		</div>
 
 		<a href='<s:url action="RevokeFavoriteUserCompleteAction"/>'><button class="btn">完了</button></a>
 		<a href='<s:url action="UserPostListAction"><s:param name="writerId" value="%{#session.writerId}"/></s:url>'><button class="btn">戻る</button></a>

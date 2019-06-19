@@ -14,7 +14,7 @@
 	<jsp:include page="header.jsp"/>
 
 	<div id="main">
-		<div>
+		<div class="message">
 			<!-- 入力チェックメッセージ -->
 			<s:if test="tagMessage != null && tagMessage.length() > 0">
 				<s:property value ="tagMessage"/>
@@ -49,12 +49,12 @@
 		</table>
 
 		<s:form action="RegistFavoritePostCompleteAction" method="post" class="block">
-			<s:textfield name="tag1" placeholder="タグ１"/>
-			<s:textfield name="tag2" placeholder="タグ２"/>
-			<s:textfield name="tag3" placeholder="タグ３"/>
-			<s:textfield name="tag4" placeholder="タグ４"/>
-			<s:textfield name="tag5" placeholder="タグ５"/>
-			<s:submit class="btn" value="完了"/>
+			<p><label>タグ１<br><s:textfield name="tag1"/></label></p>
+			<p><label>タグ２<br><s:textfield name="tag2"/></label></p>
+			<p><label>タグ３<br><s:textfield name="tag3"/></label></p>
+			<p><label>タグ４<br><s:textfield name="tag4"/></label></p>
+			<p><label>タグ５<br><s:textfield name="tag5"/></label></p>
+			<p><s:submit class="btn" value="完了"/></p>
 		</s:form>
 
 		<a href='<s:url action="PostDetailsAction"><s:param name="postId" value="%{#session.postId}"/></s:url>'><button class="btn">戻る</button></a>

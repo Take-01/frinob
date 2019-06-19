@@ -17,9 +17,9 @@
 	<div id="main">
 		<div class="block">
 			<h1><s:property value="#session.title"/></h1>
-			<p><s:property value="#session.categoryName"/></p>
-			<p>投稿日：<s:property value="#session.registDate"/>　更新日：<s:property value="#session.updateDate"/></p>
-			<div>
+			<p class="category">カテゴリー：<s:property value="#session.categoryName"/></p>
+			<p class="date">投稿日：<s:property value="#session.registDate"/>　更新日：<s:property value="#session.updateDate"/></p>
+			<div class="text">
 				<s:property value="#session.body"/>
 			</div>
 		</div>

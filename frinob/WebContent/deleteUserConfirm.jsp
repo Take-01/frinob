@@ -33,8 +33,8 @@
 
 		<h5>削除する場合、パスワードを入力してください。</h5>
 		<s:form method="post" action="DeleteUserCompleteAction" class="block">
-			<s:password name="password" label="パスワード"/>
-			<s:submit class="btn" value="削除"/>
+			<p><label>パスワード</label><br><s:password name="password"/></p>
+			<p><s:submit class="btn" value="削除"/></p>
 		</s:form>
 		<a href='<s:url action="UpdateUserAction"/>'><button class="btn">変更</button></a>
 		<a href='<s:url action="MyPageAction"/>'><button class="btn">戻る</button></a>

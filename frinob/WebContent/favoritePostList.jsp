@@ -24,9 +24,9 @@
 				<div class="linkBlock block">
 					<a class="link" href='<s:url action="PostDetailsAction"><s:param name="postId" value="%{favPostId}"/></s:url>'></a>
 					<h3><s:property value="title"/></h3>
-					<p><s:property value="writerId"/></p>
-					<p><s:property value="body"/></p>
-					<p>
+					<p><s:property value="writerName"/></p>
+					<p class="text"><s:property value="body"/></p>
+					<p class="tag">
 						<s:property value="postTag1"/>　<s:property value="postTag2"/>　<s:property value="postTag3"/>　<s:property value="postTag4"/>　<s:property value="postTag5"/>
 					</p>
 				</div>

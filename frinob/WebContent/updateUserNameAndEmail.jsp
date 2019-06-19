@@ -14,22 +14,19 @@
 	<jsp:include page="header.jsp" />
 
 	<div id="main">
-		<div>
-			<!-- ユーザー名の入力チェックメッセージ -->
-			<s:if test="userNameMessageList != null && userNameMessageList.size() > 0">
-				<s:iterator value="userNameMessageList"><s:property /><br></s:iterator>
-			</s:if>
-			<!-- メールアドレスの入力チェックメッセージ -->
-			<s:if test="emailMessageList != null && emailMessageList.size() > 0">
-				<s:iterator value="emailMessageList"><s:property /></s:iterator>
-			</s:if>
-		</div>
-
 		<!-- 入力欄 -->
 		<s:form action="UpdateUserNameAndEmailConfirmAction" method="post" class="block">
-			<s:textfield name="userName" value="%{userName}"/>
-			<s:textfield name="email" value="%{email}"/>
-			<s:submit class="btn" value="変更"/>
+			<p><label>ユーザー名<br><s:textfield name="userName" value="%{userName}"/></label></p>
+				<!-- ユーザー名の入力チェックメッセージ -->
+				<s:if test="userNameMessageList != null && userNameMessageList.size() > 0">
+					<s:iterator value="userNameMessageList"><p class="message"><s:property /></p>></s:iterator>
+				</s:if>
+			<p><label>メールアドレス<br><s:textfield name="email" value="%{email}"/></label></p>
+				<!-- メールアドレスの入力チェックメッセージ -->
+				<s:if test="emailMessageList != null && emailMessageList.size() > 0">
+					<s:iterator value="emailMessageList"><p class="message"><s:property /></p></s:iterator>
+				</s:if>
+			<p><s:submit class="btn" value="変更"/></p>
 		</s:form>
 	</div>
 </body>

@@ -32,10 +32,10 @@
 							<h3>
 								<s:property value="title" />
 							</h3>
-							<p>
+							<p class="text">
 								<s:property value="body" />
 							</p>
-							<p>
+							<p class="date">
 								投稿日：
 								<s:property value="registDate" />
 								更新日：

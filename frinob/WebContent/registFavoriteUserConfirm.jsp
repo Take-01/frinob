@@ -15,16 +15,18 @@
 
 	<div id="main">
 		<h1>このユーザーをお気に入り登録します</h1>
-		<h3>ユーザーID：<s:property value="#session.writerId"/></h3>
-		<h3>ユーザー名：<s:property value="#session.writerName"/></h3>
+		<div class="block">
+			<h3>ユーザーID：<s:property value="#session.writerId"/></h3>
+			<h3>ユーザー名：<s:property value="#session.writerName"/></h3>
+		</div>
 
 		<s:form action="RegistFavoriteUserCompleteAction" method="post" class="block">
-			<s:textfield name="tag1" placeholder="タグ１"/>
-			<s:textfield name="tag2" placeholder="タグ２"/>
-			<s:textfield name="tag3" placeholder="タグ３"/>
-			<s:textfield name="tag4" placeholder="タグ４"/>
-			<s:textfield name="tag5" placeholder="タグ５"/>
-			<s:submit class="btn" value="完了"/>
+			<p><label>タグ１<br><s:textfield name="tag1"/></label></p>
+			<p><label>タグ２<br><s:textfield name="tag2"/></label></p>
+			<p><label>タグ３<br><s:textfield name="tag3"/></label></p>
+			<p><label>タグ４<br><s:textfield name="tag4"/></label></p>
+			<p><label>タグ５<br><s:textfield name="tag5"/></label></p>
+			<p><s:submit class="btn" value="完了"/>
 		</s:form>
 
 		<a href='<s:url action="UserPostListAction"/>'><button class="btn">戻る</button></a>

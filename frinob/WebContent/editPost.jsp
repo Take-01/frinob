@@ -14,23 +14,20 @@
 	<jsp:include page="header.jsp"/>
 
 	<div id="main">
-		<div>
-			<!-- タイトル入力チェックメッセージ -->
-			<s:if test="titleMessageList != null && titleMessageList.size() > 0">
-				<s:iterator value="%{titleMessageList}"><s:property /></s:iterator>
-			</s:if>
-			<!-- 本文入力チェックメッセージ -->
-			<s:if test="bodyMessageList != null && bodyMessageList.size() > 0">
-				<s:iterator value="%{bodyMessageList}"><s:property /></s:iterator>
-			</s:if>
-		</div>
-
 		<!-- 入力フォーム -->
 		<s:form method="post" action="EditPostConfirmAction" class="block">
-			<s:textfield label="タイトル" name="title" value="%{title}"/>
-			<s:textarea label="本文" name="body" value="%{body}"/>
-			<s:property value="%{#session.categoryName}"/>
-			<s:submit class="btn" value="編集"/>
+			<p><label>タイトル<br><s:textfield name="title" value="%{title}"/></label></p>
+				<!-- タイトル入力チェックメッセージ -->
+				<s:if test="titleMessageList != null && titleMessageList.size() > 0">
+					<s:iterator value="%{titleMessageList}"><p class="message"><s:property /></p></s:iterator>
+				</s:if>
+			<p><label>本文<br><s:textarea name="body" value="%{body}"/></label></p>
+				<!-- 本文入力チェックメッセージ -->
+				<s:if test="bodyMessageList != null && bodyMessageList.size() > 0">
+					<s:iterator value="%{bodyMessageList}"><p class="message"><s:property /></p></s:iterator>
+				</s:if>
+			<p>カテゴリー：<s:property value="%{#session.categoryName}"/></p>
+			<p><s:submit class="btn" value="編集"/></p>
 		</s:form>
 	</div>
 </body>

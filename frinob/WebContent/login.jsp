@@ -16,24 +16,6 @@
 	<div id="main">
 		<h3>ログインしてください</h3>
 
-		<!-- ユーザーID入力チェックメッセージ -->
-		<div class="message">
-			<s:if test="userIdMessageList != null && userIdMessageList.size() > 0">
-				<s:iterator value="userIdMessageList">
-					<s:property/><br>
-				</s:iterator>
-			</s:if>
-		</div>
-
-		<!-- パスワード入力チェックメッセージ -->
-		<div class="message">
-			<s:if test="passwordMessageList != null && passwordMessageList.size() > 0">
-				<s:iterator value="passwordMessageList">
-					<s:property/><br>
-				</s:iterator>
-			</s:if>
-		</div>
-
 		<!-- 入力内容が一致しないメッセージ -->
 		<div class="message">
 			<s:if test="notMatchMessage != null">
@@ -43,9 +25,21 @@
 
 		<!-- 入力フォーム -->
 		<s:form action="LoginAction" method="post" class="block">
-			<s:textfield label="ユーザーID" name="userId" value="%{userId}"/>
-			<s:password label="パスワード" name="password"/>
-			<s:submit class="btn" value="ログイン"/>
+			<p><label>ユーザーID<br><s:textfield name="userId" value="%{userId}"/></label></p>
+				<!-- ユーザーID入力チェックメッセージ -->
+				<s:if test="userIdMessageList != null && userIdMessageList.size() > 0">
+					<s:iterator value="userIdMessageList">
+						<p class="message"><s:property /></p>
+					</s:iterator>
+				</s:if>
+			<p><label>パスワード<br><s:password name="password"/></label></p>
+				<!-- パスワード入力チェックメッセージ -->
+				<s:if test="passwordMessageList != null && passwordMessageList.size() > 0">
+					<s:iterator value="passwordMessageList">
+						<p class="message"><s:property/></p>
+					</s:iterator>
+				</s:if>
+			<p><s:submit class="btn" value="ログイン"/></p>
 		</s:form>
 	</div>
 
